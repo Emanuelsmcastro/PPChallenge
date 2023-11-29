@@ -1,12 +1,15 @@
 package com.project.challenge.msuser.entities;
 
+import com.project.challenge.msuser.entities.abstracts.AbstractUser;
 import com.project.challenge.msuser.entities.enumerations.UserType;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
 @Entity
-public class User {
+@Table(name = "tb_user")
+public class User extends AbstractUser {
 
     @Column(unique = true, nullable = false)
     private String cpfCNPJ;
