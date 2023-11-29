@@ -4,13 +4,16 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.project.challenge.msuser.entities.abstracts.AbstractUser;
-import com.project.challenge.msuser.entities.enumerations.UserType;
+import com.project.challenge.msuser.enumerations.UserType;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -22,6 +25,10 @@ public class User extends AbstractUser {
     @Column(nullable = false)
     private UserType userType;
     private Double balance;
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private ShopKeeper shopKeeper;
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private CommonUser commonUser;
 
     @ManyToMany
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
