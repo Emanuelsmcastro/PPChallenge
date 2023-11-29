@@ -1,5 +1,7 @@
 package com.project.challenge.msuser.entities.enumerations;
 
+import com.project.challenge.msuser.infra.exceptions.UserTypeNotFound;
+
 public enum UserType {
 
     PF(0),
@@ -20,6 +22,6 @@ public enum UserType {
             if (userType.getValue().equals(value))
                 return userType;
         }
-        return null;
+        throw new UserTypeNotFound(String.format("Type %d not found.", value));
     }
 }
