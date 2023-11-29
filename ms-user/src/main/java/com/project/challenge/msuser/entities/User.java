@@ -1,10 +1,16 @@
 package com.project.challenge.msuser.entities;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import com.project.challenge.msuser.entities.abstracts.AbstractUser;
 import com.project.challenge.msuser.entities.enumerations.UserType;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -16,6 +22,10 @@ public class User extends AbstractUser {
     @Column(nullable = false)
     private UserType userType;
     private Double balance;
+
+    @ManyToMany
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles = new HashSet<>();
 
     public User() {
     }
