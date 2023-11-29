@@ -1,0 +1,14 @@
+server:
+  port: 8081
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${db_host:localhost}:${db_port:3307}/${db_name:ppchallenge}?useTimezone=true&serverTimezone=UTC
+    username: ${db_user:user}
+    password: ${db_password:password}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQLDialect
+    show-sql: true
