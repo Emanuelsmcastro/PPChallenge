@@ -30,6 +30,11 @@ public class UserFactory {
         return this;
     }
 
+    public UserFactory autoUuid() {
+        user.setUuid(UUID.randomUUID().toString());
+        return this;
+    }
+
     public UserFactory setFullName(String name) {
         user.setFullName(name);
         return this;
