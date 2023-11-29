@@ -67,4 +67,24 @@ public class User extends AbstractUser {
         this.balance = balance;
     }
 
+    public ShopKeeper getShopKeeper() {
+        return shopKeeper;
+    }
+
+    public void setShopKeeper(ShopKeeper shopKeeper) {
+        this.shopKeeper = shopKeeper;
+    }
+
+    public CommonUser getCommonUser() {
+        return commonUser;
+    }
+
+    public void setCommonUser(CommonUser commonUser) {
+        this.commonUser = commonUser;
+    }
+
+    public void addRole(Role role) {
+        roles.add(role);
+    }
+
 }
