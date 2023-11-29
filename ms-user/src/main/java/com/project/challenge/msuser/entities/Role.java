@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.project.challenge.msuser.entities.enumerations.RoleType;
+import com.project.challenge.msuser.enumerations.RoleType;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
