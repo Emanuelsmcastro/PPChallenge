@@ -3,13 +3,13 @@ package com.project.challenge.msuser.entities;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.project.challenge.msuser.entities.abstracts.AbstractUser;
 import com.project.challenge.msuser.enumerations.UserType;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
@@ -25,9 +25,11 @@ public class User extends AbstractUser {
     @Column(nullable = false)
     private UserType userType;
     private Double balance;
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JsonIgnore
+    @OneToOne(cascade = CascadeType.ALL)
     private ShopKeeper shopKeeper;
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JsonIgnore
+    @OneToOne(cascade = CascadeType.ALL)
     private CommonUser commonUser;
 
     @ManyToMany

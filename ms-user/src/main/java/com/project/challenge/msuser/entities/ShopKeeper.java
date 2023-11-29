@@ -2,11 +2,11 @@ package com.project.challenge.msuser.entities;
 
 import java.io.Serializable;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.project.challenge.msuser.interfaces.IReceiving;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -25,8 +25,7 @@ public class ShopKeeper implements IReceiving, Serializable {
     private String uuid;
     private Integer yearsInTheCompany;
 
-    @JsonIgnore
-    @OneToOne(mappedBy = "shopKeeper")
+    @OneToOne(mappedBy = "shopKeeper", fetch = FetchType.EAGER)
     private User user;
 
     public ShopKeeper() {
