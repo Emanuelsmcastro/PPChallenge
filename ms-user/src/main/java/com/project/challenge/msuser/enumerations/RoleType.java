@@ -3,8 +3,8 @@ package com.project.challenge.msuser.enumerations;
 import com.project.challenge.msuser.infra.exceptions.RoleTypeNotFound;
 
 public enum RoleType {
-    PF(0),
-    PJ(1);
+    BASIC(0),
+    ADMIN(1);
 
     private Integer value;
 
