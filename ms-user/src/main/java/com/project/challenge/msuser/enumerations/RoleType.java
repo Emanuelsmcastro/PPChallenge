@@ -16,7 +16,7 @@ public enum RoleType {
         return value;
     }
 
-    public RoleType valueOf(Integer value) {
+    public static RoleType valueOf(Integer value) {
         for (RoleType roleType : values()) {
             if (roleType.getValue().equals(value))
                 return roleType;
