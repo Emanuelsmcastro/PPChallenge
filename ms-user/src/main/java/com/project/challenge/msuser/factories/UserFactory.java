@@ -56,7 +56,7 @@ public class UserFactory {
     }
 
     public UserFactory setUserType(UserType type) {
-        user.setUserType(type);
+        user.setUserType(type.getValue());
         return this;
     }
 
