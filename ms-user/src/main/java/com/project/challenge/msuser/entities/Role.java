@@ -5,7 +5,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.project.challenge.msuser.enumerations.RoleType;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -26,7 +25,7 @@ public class Role implements Serializable {
     @Column(unique = true, nullable = false)
     private String uuid;
     @Column(nullable = false)
-    private RoleType roleType;
+    private Integer roleType;
 
     @JsonIgnore
     @ManyToMany(mappedBy = "roles")
@@ -35,7 +34,7 @@ public class Role implements Serializable {
     public Role() {
     }
 
-    public Role(Long id, String uuid, RoleType roleType) {
+    public Role(Long id, String uuid, Integer roleType) {
         this.id = id;
         this.uuid = uuid;
         this.roleType = roleType;
@@ -57,11 +56,11 @@ public class Role implements Serializable {
         this.uuid = uuid;
     }
 
-    public RoleType getRoleType() {
+    public Integer getRoleType() {
         return roleType;
     }
 
-    public void setRoleType(RoleType roleType) {
+    public void setRoleType(Integer roleType) {
         this.roleType = roleType;
     }
 
