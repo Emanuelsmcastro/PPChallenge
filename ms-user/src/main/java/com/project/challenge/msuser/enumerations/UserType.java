@@ -17,7 +17,7 @@ public enum UserType {
         return value;
     }
 
-    public UserType valueOf(Integer value) {
+    public static UserType valueOf(Integer value) {
         for (UserType userType : values()) {
             if (userType.getValue().equals(value))
                 return userType;
