@@ -89,4 +89,13 @@ public class User extends AbstractUser {
         roles.add(role);
     }
 
+    @Override
+    public String toString() {
+        String superString = super.toString();
+        String thisString = " cpfCNPJ=" + cpfCNPJ + ", userType=" + userType + ", balance=" + balance
+                + ", shopKeeper="
+                + shopKeeper + ", commonUser=" + commonUser + ", roles=" + roles;
+        return superString.replace("]", thisString);
+    }
+
 }
