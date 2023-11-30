@@ -33,7 +33,7 @@ public class RoleFactory {
     }
 
     public RoleFactory setRoleType(RoleType type) {
-        role.setRoleType(type.getValue());
+        role.setRoleType(type);
         return this;
     }
 

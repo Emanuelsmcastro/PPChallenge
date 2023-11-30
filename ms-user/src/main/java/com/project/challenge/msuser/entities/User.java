@@ -5,6 +5,7 @@ import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.project.challenge.msuser.entities.abstracts.AbstractUser;
+import com.project.challenge.msuser.enumerations.UserType;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -22,7 +23,7 @@ public class User extends AbstractUser {
     @Column(unique = true, nullable = false)
     private String cpfCNPJ;
     @Column(nullable = false)
-    private Integer userType;
+    private UserType userType;
     private Double balance;
     @JsonIgnore
     @OneToOne(cascade = CascadeType.ALL)
@@ -38,7 +39,7 @@ public class User extends AbstractUser {
     public User() {
     }
 
-    public User(String cpfCNPJ, Integer userType, Double balance) {
+    public User(String cpfCNPJ, UserType userType, Double balance) {
         this.cpfCNPJ = cpfCNPJ;
         this.userType = userType;
         this.balance = balance;
@@ -52,11 +53,11 @@ public class User extends AbstractUser {
         this.cpfCNPJ = cpfCNPJ;
     }
 
-    public Integer getUserType() {
+    public UserType getUserType() {
         return userType;
     }
 
-    public void setUserType(Integer userType) {
+    public void setUserType(UserType userType) {
         this.userType = userType;
     }
 
