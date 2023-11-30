@@ -102,7 +102,8 @@ public class AbstractUser implements Serializable {
 
     @Override
     public String toString() {
-        return "AbstractUser [id=" + id + ", uuid=" + uuid + ", fullName=" + fullName + ", email=" + email
+        return getClass().getSimpleName() + " [id=" + id + ", uuid=" + uuid + ", fullName=" + fullName + ", email="
+                + email
                 + ", password=" + password + "]";
     }
 
