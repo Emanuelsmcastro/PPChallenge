@@ -17,7 +17,7 @@ public enum TransferStatus {
         return value;
     }
 
-    public TransferStatus valueOf(Integer value) {
+    public static TransferStatus valueOf(Integer value) {
         for (TransferStatus status : values()) {
             if (status.getValue().equals(value))
                 return status;
