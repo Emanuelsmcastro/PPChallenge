@@ -16,6 +16,7 @@ public class ShopKeeperDTO extends BaseUser implements IReceiving {
         this.yearsInTheCompany = yearsInTheCompany;
     }
 
+    @Override
     public String getUuid() {
         return uuid;
     }
