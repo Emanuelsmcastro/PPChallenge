@@ -1,9 +1,8 @@
 package com.project.challenge.mstransfer.mstransfer.DTOs.user.v1;
 
-import java.io.Serializable;
+import com.project.challenge.mstransfer.mstransfer.interfaces.IReceiving;
 
-public class ShopKeeperDTO implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class ShopKeeperDTO extends BaseUser implements IReceiving {
 
     private String uuid;
     private Integer yearsInTheCompany;
@@ -61,6 +60,11 @@ public class ShopKeeperDTO implements Serializable {
     @Override
     public String toString() {
         return "ShopKeeperDTO [uuid=" + uuid + ", yearsInTheCompany=" + yearsInTheCompany + "]";
+    }
+
+    @Override
+    public void toReceive(Double value) {
+        System.out.println("Receive: " + value);
     }
 
 }

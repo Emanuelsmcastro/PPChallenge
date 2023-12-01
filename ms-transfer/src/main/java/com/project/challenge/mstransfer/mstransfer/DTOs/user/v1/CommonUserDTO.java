@@ -1,9 +1,8 @@
 package com.project.challenge.mstransfer.mstransfer.DTOs.user.v1;
 
-import java.io.Serializable;
+import com.project.challenge.mstransfer.mstransfer.interfaces.ISendingReceiving;
 
-public class CommonUserDTO implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class CommonUserDTO extends BaseUser implements ISendingReceiving<BaseUser> {
 
     private String uuid;
     private Double transferLimit;
@@ -17,6 +16,7 @@ public class CommonUserDTO implements Serializable {
         this.transferLimit = transferLimit;
     }
 
+    @Override
     public String getUuid() {
         return uuid;
     }
@@ -61,6 +61,16 @@ public class CommonUserDTO implements Serializable {
     @Override
     public String toString() {
         return "CommonUserDTO [uuid=" + uuid + ", transferLimit=" + transferLimit + "]";
+    }
+
+    @Override
+    public void sending(Double value, BaseUser receiver) {
+        System.out.println("Sending: " + value + " to: " + receiver);
+    }
+
+    @Override
+    public void toReceive(Double value) {
+        System.out.println("Receive: " + value);
     }
 
 }
