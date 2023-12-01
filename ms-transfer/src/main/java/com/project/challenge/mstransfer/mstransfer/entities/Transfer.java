@@ -12,6 +12,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 @Entity
 @Table(name = "tb_transfer")
@@ -24,9 +25,9 @@ public class Transfer implements Serializable {
     @Column(unique = true, nullable = false)
     private String uuid;
     private Double valueToReceive;
-    @Column(insertable = false)
+    @Transient
     private IReceiving receiver;
-    @Column(insertable = false)
+    @Transient
     private SetSending sender;
     private String uuidReceiver;
     private String uuidSender;
