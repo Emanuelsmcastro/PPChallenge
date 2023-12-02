@@ -4,7 +4,6 @@ import com.project.challenge.mstransfer.mstransfer.interfaces.ISendingReceiving;
 
 public class CommonUserDTO extends BaseUser implements ISendingReceiving<BaseUser> {
 
-    private String uuid;
     private Double transferLimit;
 
     public CommonUserDTO() {
@@ -12,17 +11,8 @@ public class CommonUserDTO extends BaseUser implements ISendingReceiving<BaseUse
     }
 
     public CommonUserDTO(String uuid, Double transferLimit) {
-        this.uuid = uuid;
+        super(uuid);
         this.transferLimit = transferLimit;
-    }
-
-    @Override
-    public String getUuid() {
-        return uuid;
-    }
-
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
     }
 
     public Double getTransferLimit() {
@@ -34,33 +24,8 @@ public class CommonUserDTO extends BaseUser implements ISendingReceiving<BaseUse
     }
 
     @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((uuid == null) ? 0 : uuid.hashCode());
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        CommonUserDTO other = (CommonUserDTO) obj;
-        if (uuid == null) {
-            if (other.uuid != null)
-                return false;
-        } else if (!uuid.equals(other.uuid))
-            return false;
-        return true;
-    }
-
-    @Override
     public String toString() {
-        return "CommonUserDTO [uuid=" + uuid + ", transferLimit=" + transferLimit + "]";
+        return "CommonUserDTO [uuid=" + super.getUuid() + ", transferLimit=" + transferLimit + "]";
     }
 
     @Override
