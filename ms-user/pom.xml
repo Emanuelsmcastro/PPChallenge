@@ -16,6 +16,7 @@
     <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>21</java.version>
+        <eureka-client-version>4.0.3</eureka-client-version>
     </properties>
     <dependencies>
         <dependency>
@@ -39,6 +40,15 @@
             <artifactId>mysql-connector-j</artifactId>
             <scope>runtime</scope>
         </dependency>
+
+        <!--
+        https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-netflix-eureka-client -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+            <version>${eureka-client-version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -49,5 +59,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
