@@ -12,7 +12,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
 
 @Entity
 @Table(name = "tb_transfer")
@@ -25,10 +24,6 @@ public class Transfer implements Serializable {
     @Column(unique = true, nullable = false)
     private String uuid;
     private Double valueToReceive;
-    @Transient
-    private IReceiving receiver;
-    @Transient
-    private SetSending sender;
     private String uuidReceiver;
     private String uuidSender;
     private LocalTime instant;
@@ -42,8 +37,6 @@ public class Transfer implements Serializable {
         this.id = id;
         this.uuid = uuid;
         this.valueToReceive = valueToReceive;
-        this.receiver = receiver;
-        this.sender = sender;
         this.uuidReceiver = receiver.getUuid();
         this.uuidSender = sender.getUuidSender();
         this.instant = instant;
@@ -94,22 +87,6 @@ public class Transfer implements Serializable {
         return instant;
     }
 
-    public IReceiving getReceiver() {
-        return receiver;
-    }
-
-    public void setReceiver(IReceiving receiver) {
-        this.receiver = receiver;
-    }
-
-    public SetSending getSender() {
-        return sender;
-    }
-
-    public void setSender(SetSending sender) {
-        this.sender = sender;
-    }
-
     public void setInstant(LocalTime instant) {
         this.instant = instant;
     }
@@ -149,8 +126,8 @@ public class Transfer implements Serializable {
 
     @Override
     public String toString() {
-        return "Transfer [id=" + id + ", uuid=" + uuid + ", valueToReceive=" + valueToReceive + ", receiver=" + receiver
-                + ", sender=" + sender + ", instant=" + instant + ", status=" + status + "]";
+        return "Transfer [id=" + id + ", uuid=" + uuid + ", valueToReceive=" + valueToReceive + ", uuidReceiver="
+                + uuidReceiver + ", uuidSender=" + uuidSender + ", instant=" + instant + ", status=" + status + "]";
     }
 
 }
