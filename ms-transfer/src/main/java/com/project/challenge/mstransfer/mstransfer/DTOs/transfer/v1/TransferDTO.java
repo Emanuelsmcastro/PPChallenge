@@ -1,4 +1,4 @@
-package com.project.challenge.mstransfer.mstransfer.DTOs.user.transfer.v1;
+package com.project.challenge.mstransfer.mstransfer.DTOs.transfer.v1;
 
 import java.time.LocalTime;
 
