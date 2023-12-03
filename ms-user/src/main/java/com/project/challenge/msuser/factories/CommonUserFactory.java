@@ -37,6 +37,8 @@ public class CommonUserFactory {
     }
 
     public CommonUser build() {
-        return user;
+        CommonUser currentUser = user;
+        user = new CommonUser();
+        return currentUser;
     }
 }
