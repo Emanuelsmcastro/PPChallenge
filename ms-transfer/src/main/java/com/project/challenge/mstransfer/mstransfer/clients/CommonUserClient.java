@@ -13,5 +13,5 @@ import com.project.challenge.mstransfer.mstransfer.DTOs.user.v1.CommonUserDTO;
 public interface CommonUserClient {
 
     @GetMapping(value = "/{uuid}")
-    ResponseEntity<CommonUserDTO> findByUuid(@PathVariable(name = "uuid") String uuid);
+    ResponseEntity<CommonUserDTO> findByUuid(@PathVariable(value = "uuid") String uuid);
 }
