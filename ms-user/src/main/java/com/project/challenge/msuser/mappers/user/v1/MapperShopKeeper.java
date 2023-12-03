@@ -1,6 +1,7 @@
 package com.project.challenge.msuser.mappers.user.v1;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.util.ObjectUtils;
 
@@ -31,8 +32,10 @@ public class MapperShopKeeper implements Mapper<ShopKeeperDTO, ShopKeeper> {
 
     @Override
     public List<ShopKeeperDTO> toDTOList(List<ShopKeeper> entities) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'toDTOList'");
+        return entities
+                .stream()
+                .map(entity -> (toDTO(entity)))
+                .collect(Collectors.toList());
     }
 
 }
