@@ -1,6 +1,7 @@
 package com.project.challenge.mstransfer.mstransfer.factories;
 
 import java.time.LocalTime;
+import java.util.UUID;
 
 import com.project.challenge.mstransfer.mstransfer.entities.SetSending;
 import com.project.challenge.mstransfer.mstransfer.entities.Transfer;
@@ -28,18 +29,23 @@ public class TransferFactory {
         return this;
     }
 
+    public TransferFactory autoUuid() {
+        transfer.setUuid(UUID.randomUUID().toString());
+        return this;
+    }
+
     public TransferFactory setValueToReceive(Double value) {
         transfer.setValueToReceive(value);
         return this;
     }
 
     public TransferFactory setReceiver(IReceiving receiver) {
-        transfer.setReceiver(receiver);
+        transfer.setUuidReceiver(receiver.getUuid());
         return this;
     }
 
     public TransferFactory setSender(SetSending sender) {
-        transfer.setSender(sender);
+        transfer.setUuidSender(sender.getUuidSender());
         return this;
     }
 
