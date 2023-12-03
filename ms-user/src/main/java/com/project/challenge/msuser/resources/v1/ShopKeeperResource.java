@@ -18,7 +18,7 @@ public class ShopKeeperResource {
     private ShopKeeperService service;
 
     @GetMapping(value = "/{uuid}")
-    public ResponseEntity<ShopKeeperDTO> findByUuid(@PathVariable(name = "uuid") String uuid) {
+    public ResponseEntity<ShopKeeperDTO> findByUuid(@PathVariable(value = "uuid") String uuid) {
         return ResponseEntity.ok().body(service.findByUuid(uuid));
     }
 }
