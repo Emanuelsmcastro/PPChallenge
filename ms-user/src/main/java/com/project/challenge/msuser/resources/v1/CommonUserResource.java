@@ -1,4 +1,4 @@
-package com.project.challenge.mstransfer.mstransfer.resources;
+package com.project.challenge.msuser.resources.v1;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -7,18 +7,18 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.project.challenge.mstransfer.mstransfer.DTOs.user.transfer.v1.TransferDTO;
-import com.project.challenge.mstransfer.mstransfer.services.TransferService;
+import com.project.challenge.msuser.DTOs.user.v1.CommonUserDTO;
+import com.project.challenge.msuser.services.v1.CommonUserService;
 
 @RestController
-@RequestMapping(value = "/ppchallenge/v1/transfers")
-public class TransferResource {
+@RequestMapping(value = "/ppchallenge/v1/common-users")
+public class CommonUserResource {
 
     @Autowired
-    private TransferService service;
+    private CommonUserService service;
 
     @GetMapping(value = "/{uuid}")
-    public ResponseEntity<TransferDTO> findByUuid(@PathVariable(value = "uuid") String uuid) {
+    public ResponseEntity<CommonUserDTO> findByUuid(@PathVariable(value = "uuid") String uuid) {
         return ResponseEntity.ok().body(service.findByUuid(uuid));
     }
 }

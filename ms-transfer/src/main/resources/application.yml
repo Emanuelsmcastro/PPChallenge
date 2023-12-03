@@ -4,7 +4,6 @@ server:
 spring:
   application:
     name: ms-transfer
-
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://${db_host:localhost}:${db_port:3307}/${db_name:ppchallenge}?useTimezone=true&serverTimezone=UTC
@@ -15,7 +14,6 @@ spring:
       ddl-auto: create
     database-platform: org.hibernate.dialect.MySQLDialect
     show-sql: true
-
   cloud:
     compatibility-verifier:
       enabled: false
