@@ -18,7 +18,7 @@ public class UserResource {
     private UserService service;
 
     @GetMapping(value = "/search/{uuid}")
-    public ResponseEntity<UserDTO> getUserByUuid(@PathVariable(name = "uuid") String uuid) {
+    public ResponseEntity<UserDTO> getUserByUuid(@PathVariable(value = "uuid") String uuid) {
         return ResponseEntity.ok().body(service.getUserByUuid(uuid));
     }
 

@@ -18,7 +18,7 @@ public class TransferResource {
     private TransferService service;
 
     @GetMapping(value = "/{uuid}")
-    public ResponseEntity<TransferDTO> findByUuid(@PathVariable(name = "uuid") String uuid) {
+    public ResponseEntity<TransferDTO> findByUuid(@PathVariable(value = "uuid") String uuid) {
         return ResponseEntity.ok().body(service.findByUuid(uuid));
     }
 }
