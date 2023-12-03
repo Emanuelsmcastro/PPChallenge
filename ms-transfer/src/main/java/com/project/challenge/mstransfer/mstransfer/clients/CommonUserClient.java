@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import com.project.challenge.mstransfer.mstransfer.DTOs.user.v1.CommonUserDTO;
 
 @Component
-@FeignClient(name = "ms-user", path = "ppchallenge/v1/common-users")
+@FeignClient(contextId = "ms-user-client1", name = "ms-user", path = "ppchallenge/v1/common-users")
 public interface CommonUserClient {
 
     @GetMapping(value = "/{uuid}")
