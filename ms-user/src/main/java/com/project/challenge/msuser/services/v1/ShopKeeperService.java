@@ -7,13 +7,13 @@ import com.project.challenge.msuser.DTOs.user.v1.ShopKeeperDTO;
 import com.project.challenge.msuser.entities.ShopKeeper;
 import com.project.challenge.msuser.infra.exceptions.CommonUserNotFound;
 import com.project.challenge.msuser.mappers.user.v1.MapperShopKeeper;
-import com.project.challenge.msuser.repositories.ShopKeeperRespository;
+import com.project.challenge.msuser.repositories.ShopKeeperRepository;
 
 @Service
 public class ShopKeeperService {
 
     @Autowired
-    private ShopKeeperRespository rep;
+    private ShopKeeperRepository rep;
 
     public ShopKeeperDTO findByUuid(String uuid) {
         return MapperShopKeeper
