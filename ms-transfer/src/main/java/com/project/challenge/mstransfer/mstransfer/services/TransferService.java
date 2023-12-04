@@ -38,6 +38,7 @@ public class TransferService {
 
     public TransferDTO createTransfer(TransferRequestDTO transferRequestDTO) {
         TransferStatus status = TransferStatus.PENDING;
+        transferRequestValidation(transferRequestDTO);
         // try {
         // transferRequestValidation(transferRequestDTO);
         // } catch (Exception e) {
