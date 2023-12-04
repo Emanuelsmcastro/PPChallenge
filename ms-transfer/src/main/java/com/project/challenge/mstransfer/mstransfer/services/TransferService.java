@@ -37,14 +37,19 @@ public class TransferService {
     }
 
     public TransferDTO createTransfer(TransferRequestDTO transferRequestDTO) {
-        transferRequestValidation(transferRequestDTO);
+        TransferStatus status = TransferStatus.PENDING;
+        // try {
+        // transferRequestValidation(transferRequestDTO);
+        // } catch (Exception e) {
+        // status = TransferStatus.FAIL;
+        // }
         Transfer transfer = TransferFactory
                 .getInstance()
                 .autoUuid()
                 .setValueToReceive(transferRequestDTO.getValueToReceive())
                 .setReceiver(findReceiver(transferRequestDTO.getShopKeeper().getUuid()))
                 .setSender(transferRequestDTO.getSender())
-                .setStatus(TransferStatus.PENDING)
+                .setStatus(status)
                 .setNow()
                 .build();
         rep.save(transfer);
