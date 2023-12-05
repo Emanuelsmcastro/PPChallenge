@@ -1,13 +1,10 @@
 package com.project.challenge.mstransfer.mstransfer.services;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.challenge.mstransfer.mstransfer.DTOs.transfer.v1.TransferDTO;
 import com.project.challenge.mstransfer.mstransfer.DTOs.transfer.v1.TransferRequestDTO;
-import com.project.challenge.mstransfer.mstransfer.DTOs.user.v1.CommonUserDTO;
 import com.project.challenge.mstransfer.mstransfer.DTOs.user.v1.ShopKeeperDTO;
 import com.project.challenge.mstransfer.mstransfer.clients.CommonUserClient;
 import com.project.challenge.mstransfer.mstransfer.clients.ShopKeeperClient;
@@ -17,6 +14,9 @@ import com.project.challenge.mstransfer.mstransfer.factories.TransferFactory;
 import com.project.challenge.mstransfer.mstransfer.infra.exceptions.TransferNotFound;
 import com.project.challenge.mstransfer.mstransfer.mappers.v1.MapperTransfer;
 import com.project.challenge.mstransfer.mstransfer.repositories.TransferRepository;
+import com.project.challenge.mstransfer.mstransfer.validators.ReceiverValidator;
+import com.project.challenge.mstransfer.mstransfer.validators.TransferValueValidator;
+import com.project.challenge.mstransfer.mstransfer.validators.ValidatorManager;
 
 @Service
 public class TransferService {
@@ -25,12 +25,10 @@ public class TransferService {
     private TransferRepository rep;
 
     @Autowired
-    private CommonUserClient commonUserClient;
-
-    @Autowired
     private ShopKeeperClient shopKeeperClient;
 
-    private Logger log = LoggerFactory.getLogger(getClass());
+    @Autowired
+    private CommonUserClient commonUserClient;
 
     public TransferDTO findByUuid(String uuid) {
         return MapperTransfer
@@ -39,15 +37,20 @@ public class TransferService {
     }
 
     public TransferDTO createTransfer(TransferRequestDTO transferRequestDTO) {
-        log.info(transferRequestDTO.toString());
-        findSender(transferRequestDTO.getSender().getUuidSender());
+        TransferStatus status = TransferStatus.PENDING;
+        transferRequestValidation(transferRequestDTO);
+        // try {
+        // transferRequestValidation(transferRequestDTO);
+        // } catch (Exception e) {
+        // status = TransferStatus.FAIL;
+        // }
         Transfer transfer = TransferFactory
                 .getInstance()
                 .autoUuid()
                 .setValueToReceive(transferRequestDTO.getValueToReceive())
                 .setReceiver(findReceiver(transferRequestDTO.getShopKeeper().getUuid()))
                 .setSender(transferRequestDTO.getSender())
-                .setStatus(TransferStatus.PENDING)
+                .setStatus(status)
                 .setNow()
                 .build();
         rep.save(transfer);
@@ -56,12 +59,15 @@ public class TransferService {
                 .toDTO(transfer);
     }
 
-    private ShopKeeperDTO findReceiver(String uuid) {
-        return shopKeeperClient.findByUuid(uuid).getBody();
+    private void transferRequestValidation(TransferRequestDTO transfer) {
+        ValidatorManager<TransferRequestDTO> validatorManager = new ValidatorManager<>(
+                new ReceiverValidator(commonUserClient),
+                new TransferValueValidator());
+        validatorManager.executeAll(transfer);
     }
 
-    private CommonUserDTO findSender(String uuid) {
-        return commonUserClient.findByUuid(uuid).getBody();
+    private ShopKeeperDTO findReceiver(String uuid) {
+        return shopKeeperClient.findByUuid(uuid).getBody();
     }
 
     private Transfer getEntityByUuid(String uuid) {
