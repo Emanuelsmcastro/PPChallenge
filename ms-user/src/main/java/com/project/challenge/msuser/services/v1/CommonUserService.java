@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.project.challenge.msuser.DTOs.user.v1.CommonUserDTO;
 import com.project.challenge.msuser.entities.CommonUser;
-import com.project.challenge.msuser.infra.exceptions.CommonUserNotFound;
+import com.project.challenge.msuser.infra.exceptions.ShopKeeperNotFound;
 import com.project.challenge.msuser.mappers.user.v1.MapperCommonUser;
 import com.project.challenge.msuser.repositories.CommonUserRepository;
 
@@ -24,7 +24,7 @@ public class CommonUserService {
     private CommonUser getEntityByUuid(String uuid) {
         return rep.findByUuid(uuid)
                 .orElseThrow(
-                        () -> (new CommonUserNotFound(
+                        () -> (new ShopKeeperNotFound(
                                 String.format("User (%s) not found.", uuid))));
     }
 
