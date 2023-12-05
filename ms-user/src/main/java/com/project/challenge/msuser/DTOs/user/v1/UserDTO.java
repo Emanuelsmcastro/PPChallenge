@@ -8,16 +8,19 @@ public class UserDTO implements Serializable {
     private String uuid;
     private String fullName;
     private String email;
+    private Double balance;
     private ShopKeeperDTO shopKeeper;
     private CommonUserDTO commonUser;
 
     public UserDTO() {
     }
 
-    public UserDTO(String uuid, String fullName, String email, ShopKeeperDTO shopKeeper, CommonUserDTO commonUser) {
+    public UserDTO(String uuid, String fullName, String email, Double balance, ShopKeeperDTO shopKeeper,
+            CommonUserDTO commonUser) {
         this.uuid = uuid;
         this.fullName = fullName;
         this.email = email;
+        this.balance = balance;
         this.shopKeeper = shopKeeper;
         this.commonUser = commonUser;
     }
@@ -28,6 +31,14 @@ public class UserDTO implements Serializable {
 
     public void setUuid(String uuid) {
         this.uuid = uuid;
+    }
+
+    public Double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(Double balance) {
+        this.balance = balance;
     }
 
     public String getEmail() {

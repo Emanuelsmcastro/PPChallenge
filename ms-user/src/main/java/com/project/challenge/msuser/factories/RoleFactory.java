@@ -38,7 +38,9 @@ public class RoleFactory {
     }
 
     public Role build() {
-        return role;
+        Role currentRole = role;
+        role = new Role();
+        return currentRole;
     }
 
 }

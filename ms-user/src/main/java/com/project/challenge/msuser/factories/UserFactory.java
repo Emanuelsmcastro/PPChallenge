@@ -81,6 +81,8 @@ public class UserFactory {
     }
 
     public User build() {
-        return user;
+        User currentUser = user;
+        user = new User();
+        return currentUser;
     }
 }

@@ -9,7 +9,6 @@ public class ShopKeeperFactory {
     private ShopKeeper user = new ShopKeeper();
 
     public ShopKeeperFactory() {
-
     }
 
     public static ShopKeeperFactory getInstance() {
@@ -37,6 +36,8 @@ public class ShopKeeperFactory {
     }
 
     public ShopKeeper build() {
-        return user;
+        ShopKeeper currentUser = user;
+        user = new ShopKeeper();
+        return currentUser;
     }
 }

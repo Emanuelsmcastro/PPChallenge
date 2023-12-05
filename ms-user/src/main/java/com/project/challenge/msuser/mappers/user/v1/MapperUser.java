@@ -28,6 +28,7 @@ public class MapperUser implements Mapper<UserDTO, User> {
         dto.setUuid(entity.getUuid());
         dto.setFullName(entity.getFullName());
         dto.setEmail(entity.getEmail());
+        dto.setBalance(entity.getBalance());
         dto.setCommonUser(MapperCommonUser.getInstance().toDTO(entity.getCommonUser()));
         dto.setShopKeeper(MapperShopKeeper.getInstance().toDTO(entity.getShopKeeper()));
         return dto;
