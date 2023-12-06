@@ -17,4 +17,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @Query(value = "SELECT u FROM User u WHERE u.shopKeeper.uuid = :uuid")
     Optional<User> findByShopKeeperUuid(@Param("uuid") String uuid);
+
+    @Query("SELECT u FROM User u LEFT JOIN u.commonUser c LEFT JOIN u.shopKeeper s WHERE c.uuid = :uuid OR s.uuid = :uuid")
+    Optional<User> findByShopKeeperOrCommonUserUuid(@Param("uuid") String uuid);
 }
