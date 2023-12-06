@@ -1,8 +1,6 @@
 package com.project.challenge.mstransfer.mstransfer.DTOs.user.v1;
 
-import com.project.challenge.mstransfer.mstransfer.interfaces.IReceiving;
-
-public class ShopKeeperDTO extends BaseUser implements IReceiving {
+public class ShopKeeperDTO extends ReceiverBaseDTO {
 
     private Integer yearsInTheCompany;
 
