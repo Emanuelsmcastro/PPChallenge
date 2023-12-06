@@ -34,6 +34,12 @@ public class UserService {
                 .toDTO(findUserByShopKeeperUuid(uuid));
     }
 
+    public UserDTO getUserByShopKeeperOrCommonUserUuid(String uuid) {
+        return MapperUser
+                .getInstance()
+                .toDTO(findUserByShopKeeperOrCommonUserUuid(uuid));
+    }
+
     public UserDTO saveBalanceToUser(UserBalanceDTO userBalanceDTO) {
         User user = findUserByUuid(userBalanceDTO.getUuid());
         user.setBalance(userBalanceDTO.getBalance());
@@ -60,6 +66,12 @@ public class UserService {
     private User findUserByShopKeeperUuid(String uuid) {
         return repo.findByShopKeeperUuid(uuid)
                 .orElseThrow(() -> new UserNotFound(String.format("User with Shopkeeper UUID (%s) not found.", uuid)));
+    }
+
+    private User findUserByShopKeeperOrCommonUserUuid(String uuid) {
+        return repo.findByShopKeeperOrCommonUserUuid(uuid)
+                .orElseThrow(() -> new UserNotFound(
+                        String.format("User with Shopkeeper/CommonUser UUID (%s) not found.", uuid)));
     }
 
 }

@@ -35,6 +35,11 @@ public class UserResource {
         return ResponseEntity.ok().body(service.getUserByShopKeeperUuid(uuid));
     }
 
+    @GetMapping(value = "/search/all/{uuid}")
+    public ResponseEntity<UserDTO> getUserByShopKeeperOrCommonUserUuid(@PathVariable(name = "uuid") String uuid) {
+        return ResponseEntity.ok().body(service.getUserByShopKeeperOrCommonUserUuid(uuid));
+    }
+
     @PostMapping(value = "/balances")
     public ResponseEntity<UserDTO> updateBalance(@RequestBody UserBalanceDTO userBalance) {
         return ResponseEntity.ok().body(service.saveBalanceToUser(userBalance));
