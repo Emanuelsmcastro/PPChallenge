@@ -9,6 +9,8 @@ import org.springframework.util.ObjectUtils;
 import com.project.challenge.mstransfer.mstransfer.DTOs.transfer.v1.TransferDTO;
 import com.project.challenge.mstransfer.mstransfer.DTOs.transfer.v1.TransferRequestDTO;
 import com.project.challenge.mstransfer.mstransfer.DTOs.user.v1.ReceiverBaseDTO;
+import com.project.challenge.mstransfer.mstransfer.DTOs.user.v1.UserBalanceDTO;
+import com.project.challenge.mstransfer.mstransfer.DTOs.user.v1.UserDTO;
 import com.project.challenge.mstransfer.mstransfer.clients.MockClient;
 import com.project.challenge.mstransfer.mstransfer.clients.UserClient;
 import com.project.challenge.mstransfer.mstransfer.entities.Transfer;
@@ -57,17 +59,30 @@ public class TransferService {
     }
 
     private void executeTransaction(Map<String, ?> senderReceiver, Transfer transfer) {
-
+        Double value = transfer.getValueToReceive();
+        UserDTO sender = (UserDTO) senderReceiver.get("sender");
+        UserDTO receiver = (UserDTO) senderReceiver.get("receiver");
+        UserBalanceDTO senderBalance = new UserBalanceDTO(
+                sender.getUuid(),
+                sender.getBalance() - value);
+        UserBalanceDTO receiverBalance = new UserBalanceDTO(
+                receiver.getUuid(),
+                receiver.getBalance() + value);
+        System.out.println(receiverBalance);
+        try {
+            userClient.updateBalance(receiverBalance);
+            userClient.updateBalance(senderBalance);
+            transfer.setStatus(TransferStatus.SUCCESS);
+        } catch (Exception e) {
+            transfer.setStatus(TransferStatus.FAIL);
+        }
     }
 
     private void transactionValidationWithoutReturnedValue(Map<String, ?> senderReceiver, Transfer transfer) {
         ValidatorManager<Transfer> transferManager = new ValidatorManager<>(
-                new InsufficientFunds(senderReceiver));
-        transferManager.executeAll(transfer);
-
-        ValidatorManager<String> mockTransferManager = new ValidatorManager<>(
+                new InsufficientFunds(senderReceiver),
                 new MockAuthValidation(mockClient));
-        mockTransferManager.executeAll("Autorizado");
+        transferManager.executeAll(transfer);
     }
 
     private Map<String, Map<String, ?>> transactionValidationWithReturnedValue(Transfer transfer) {
