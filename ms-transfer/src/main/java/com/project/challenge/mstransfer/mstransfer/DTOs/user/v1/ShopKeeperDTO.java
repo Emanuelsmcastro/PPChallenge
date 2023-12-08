@@ -1,6 +1,6 @@
 package com.project.challenge.mstransfer.mstransfer.DTOs.user.v1;
 
-public class ShopKeeperDTO extends ReceiverBaseDTO {
+public class ShopKeeperDTO extends ReceiverDTO {
 
     private Integer yearsInTheCompany;
 
@@ -24,11 +24,6 @@ public class ShopKeeperDTO extends ReceiverBaseDTO {
     @Override
     public String toString() {
         return "ShopKeeperDTO [uuid=" + super.getUuid() + ", yearsInTheCompany=" + yearsInTheCompany + "]";
-    }
-
-    @Override
-    public void toReceive(Double value) {
-        System.out.println("Receive: " + value);
     }
 
 }
