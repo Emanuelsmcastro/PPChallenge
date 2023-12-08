@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.time.LocalTime;
 
 import com.project.challenge.mstransfer.mstransfer.enumerations.TransferStatus;
-import com.project.challenge.mstransfer.mstransfer.interfaces.IReceiving;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -32,12 +31,12 @@ public class Transfer implements Serializable {
     public Transfer() {
     }
 
-    public Transfer(Long id, String uuid, Double valueToReceive, IReceiving receiver, SetSending sender,
+    public Transfer(Long id, String uuid, Double valueToReceive, String receiver, SetSending sender,
             LocalTime instant, TransferStatus status) {
         this.id = id;
         this.uuid = uuid;
         this.valueToReceive = valueToReceive;
-        this.uuidReceiver = receiver.getUuid();
+        this.uuidReceiver = receiver;
         this.uuidSender = sender.getUuidSender();
         this.instant = instant;
         this.status = status;

@@ -2,22 +2,22 @@ package com.project.challenge.mstransfer.mstransfer.DTOs.transfer.v1;
 
 import java.io.Serializable;
 
-import com.project.challenge.mstransfer.mstransfer.DTOs.user.v1.ReducedShopKeeperDTO;
+import com.project.challenge.mstransfer.mstransfer.DTOs.user.v1.ReducedReceiverDTO;
 import com.project.challenge.mstransfer.mstransfer.entities.SetSending;
 
 public class TransferRequestDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Double valueToReceive;
-    private ReducedShopKeeperDTO shopKeeper;
+    private ReducedReceiverDTO receiver;
     private SetSending sender;
 
     public TransferRequestDTO() {
     }
 
-    public TransferRequestDTO(Double valueToReceive, ReducedShopKeeperDTO shopKeeper, SetSending sender) {
+    public TransferRequestDTO(Double valueToReceive, ReducedReceiverDTO receiver, SetSending sender) {
         this.valueToReceive = valueToReceive;
-        this.shopKeeper = shopKeeper;
+        this.receiver = receiver;
         this.sender = sender;
     }
 
@@ -29,12 +29,12 @@ public class TransferRequestDTO implements Serializable {
         this.valueToReceive = valueToReceive;
     }
 
-    public ReducedShopKeeperDTO getShopKeeper() {
-        return shopKeeper;
+    public ReducedReceiverDTO getReceiver() {
+        return receiver;
     }
 
-    public void setShopKeeper(ReducedShopKeeperDTO shopKeeper) {
-        this.shopKeeper = shopKeeper;
+    public void setReceiver(ReducedReceiverDTO receiver) {
+        this.receiver = receiver;
     }
 
     public SetSending getSender() {
@@ -47,7 +47,7 @@ public class TransferRequestDTO implements Serializable {
 
     @Override
     public String toString() {
-        return "TransferRequestDTO [valueToReceive=" + valueToReceive + ", shopKeeper=" + shopKeeper + ", sender="
+        return "TransferRequestDTO [valueToReceive=" + valueToReceive + ", receiver=" + receiver + ", sender="
                 + sender + "]";
     }
 

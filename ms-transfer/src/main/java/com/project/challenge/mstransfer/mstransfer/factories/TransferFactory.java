@@ -6,7 +6,6 @@ import java.util.UUID;
 import com.project.challenge.mstransfer.mstransfer.entities.SetSending;
 import com.project.challenge.mstransfer.mstransfer.entities.Transfer;
 import com.project.challenge.mstransfer.mstransfer.enumerations.TransferStatus;
-import com.project.challenge.mstransfer.mstransfer.interfaces.IReceiving;
 
 public class TransferFactory {
     private static final TransferFactory instance = new TransferFactory();
@@ -39,8 +38,8 @@ public class TransferFactory {
         return this;
     }
 
-    public TransferFactory setReceiver(IReceiving receiver) {
-        transfer.setUuidReceiver(receiver.getUuid());
+    public TransferFactory setReceiver(String receiverUuid) {
+        transfer.setUuidReceiver(receiverUuid);
         return this;
     }
 
