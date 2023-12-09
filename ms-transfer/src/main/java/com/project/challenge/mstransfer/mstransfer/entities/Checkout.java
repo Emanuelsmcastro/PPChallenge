@@ -2,19 +2,20 @@ package com.project.challenge.mstransfer.mstransfer.entities;
 
 import java.io.Serializable;
 
-import com.project.challenge.mstransfer.mstransfer.DTOs.user.v1.UserDTO;
+import com.project.challenge.mstransfer.mstransfer.interfaces.IReceiver;
+import com.project.challenge.mstransfer.mstransfer.interfaces.ISender;
 
 public class Checkout implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Double transferValue;
-    private UserDTO receiver;
-    private UserDTO sender;
+    private IReceiver receiver;
+    private ISender sender;
 
     public Checkout() {
     }
 
-    public Checkout(Double transferValue, UserDTO receiver, UserDTO sender) {
+    public Checkout(Double transferValue, IReceiver receiver, ISender sender) {
         this.transferValue = transferValue;
         this.receiver = receiver;
         this.sender = sender;
@@ -28,19 +29,19 @@ public class Checkout implements Serializable {
         this.transferValue = transferValue;
     }
 
-    public UserDTO getReceiver() {
+    public IReceiver getReceiver() {
         return receiver;
     }
 
-    public void setReceiver(UserDTO receiver) {
+    public void setReceiver(IReceiver receiver) {
         this.receiver = receiver;
     }
 
-    public UserDTO getSender() {
+    public ISender getSender() {
         return sender;
     }
 
-    public void setSender(UserDTO sender) {
+    public void setSender(ISender sender) {
         this.sender = sender;
     }
 
