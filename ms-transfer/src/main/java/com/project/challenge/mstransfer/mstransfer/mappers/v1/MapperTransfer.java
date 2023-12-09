@@ -19,7 +19,7 @@ public class MapperTransfer implements Mapper<TransferDTO, Transfer> {
     }
 
     @Override
-    public TransferDTO toDTO(Transfer entity) {
+    public TransferDTO convert(Transfer entity) {
         return new TransferDTO(
                 entity.getUuid(),
                 entity.getValueToReceive(),
@@ -31,11 +31,11 @@ public class MapperTransfer implements Mapper<TransferDTO, Transfer> {
     }
 
     @Override
-    public List<TransferDTO> toDTOList(List<Transfer> entities) {
+    public List<TransferDTO> convertList(List<Transfer> entities) {
         return entities
                 .stream()
                 .map(
-                        entity -> (toDTO(entity)))
+                        entity -> (convert(entity)))
                 .collect(Collectors.toList());
     }
 
