@@ -2,8 +2,6 @@ package com.project.challenge.msuser.entities;
 
 import java.io.Serializable;
 
-import com.project.challenge.msuser.interfaces.IReceiving;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -15,7 +13,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "tb_shop_keeper")
-public class ShopKeeper implements IReceiving, Serializable {
+public class ShopKeeper implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -89,11 +87,6 @@ public class ShopKeeper implements IReceiving, Serializable {
     @Override
     public String toString() {
         return "ShopKeeper [id=" + id + ", uuid=" + uuid + ", yearsInTheCompany=" + yearsInTheCompany + "]";
-    }
-
-    @Override
-    public void toReceive(Double value) {
-        System.out.println("Receive: " + value);
     }
 
 }

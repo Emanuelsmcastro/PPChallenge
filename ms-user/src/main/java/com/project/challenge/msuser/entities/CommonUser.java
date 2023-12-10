@@ -1,7 +1,5 @@
 package com.project.challenge.msuser.entities;
 
-import com.project.challenge.msuser.interfaces.ISendingReceiving;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -13,7 +11,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "tb_common_user")
-public class CommonUser implements ISendingReceiving {
+public class CommonUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -86,16 +84,6 @@ public class CommonUser implements ISendingReceiving {
     @Override
     public String toString() {
         return "CommonUser [id=" + id + ", uuid=" + uuid + ", transferLimit=" + transferLimit + "]";
-    }
-
-    @Override
-    public void sending(Double value, User user) {
-        System.out.println("Sending: " + value + " to: " + user);
-    }
-
-    @Override
-    public void toReceive(Double value) {
-        System.out.println("Receive: " + value);
     }
 
 }
