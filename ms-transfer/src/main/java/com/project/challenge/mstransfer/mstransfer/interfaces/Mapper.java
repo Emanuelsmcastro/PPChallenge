@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface Mapper<T, B> {
 
-    T toDTO(B entity);
+    T convert(B entity);
 
-    List<T> toDTOList(List<B> entities);
+    List<T> convertList(List<B> entities);
 }

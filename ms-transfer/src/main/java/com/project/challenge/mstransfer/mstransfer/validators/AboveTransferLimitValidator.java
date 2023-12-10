@@ -12,7 +12,7 @@ public class AboveTransferLimitValidator implements IValidator<Checkout> {
 
     @Override
     public void execute(Checkout checkout) {
-        if (checkout.getSender().getCommonUser().getTransferLimit() < checkout.getTransferValue())
+        if (checkout.getSender().getTransferLimit() < checkout.getTransferValue())
             throw new TransferValueException("Transfer above the sender's account limit.");
     }
 
