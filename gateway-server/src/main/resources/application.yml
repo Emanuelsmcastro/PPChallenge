@@ -13,6 +13,11 @@ spring:
           predicates:
             - Path=/ms-transfer/**
 
+        - id: ms-user
+          uri: lb://ms-user
+          predicates:
+            - Path=/ms-user/**
+
       discovery:
         locator:
           enabled: true
