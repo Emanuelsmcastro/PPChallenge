@@ -19,6 +19,8 @@ import com.project.challenge.msuser.mappers.user.v1.MapperUser;
 import com.project.challenge.msuser.repositories.UserRepository;
 import com.project.challenge.msuser.resources.v1.UserResource;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class UserService {
 
@@ -62,17 +64,12 @@ public class UserService {
                 .toDTO(findUserByShopKeeperOrCommonUserUuid(uuid));
     }
 
+    @Transactional
     public UserDTO saveBalanceToUser(UserBalanceDTO userBalanceDTO) {
-        User user = findUserByUuid(userBalanceDTO.getUuid());
-        user.setBalance(userBalanceDTO.getBalance());
-        saveUser(user);
+        repo.updateUserBalance(userBalanceDTO.getUuid(), userBalanceDTO.getBalance());
         return MapperUser
                 .getInstance()
-                .toDTO(user);
-    }
-
-    private void saveUser(User user) {
-        repo.save(user);
+                .toDTO(findUserByUuid(userBalanceDTO.getUuid()));
     }
 
     private User findUserByUuid(String uuid) {
