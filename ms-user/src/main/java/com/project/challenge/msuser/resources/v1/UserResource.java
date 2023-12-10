@@ -16,9 +16,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.project.challenge.msuser.DTOs.user.v1.UserBalanceDTO;
 import com.project.challenge.msuser.DTOs.user.v1.UserDTO;
+import com.project.challenge.msuser.infra.exceptions.DTOs.BasicResponseExceptionDTO;
 import com.project.challenge.msuser.services.v1.UserService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 @RestController
+@Tag(name = "User Resource V1", description = "These endpoints are responsible for handling all available functionalities related to the user.")
 @RequestMapping(value = "/ppchallenge/v1/users")
 public class UserResource {
 
@@ -26,6 +35,11 @@ public class UserResource {
     private UserService service;
 
     @GetMapping
+    @Operation(summary = "Find all users.", description = "Returns all users with paging system.", responses = {
+            @ApiResponse(description = "Success", responseCode = "200", content = {
+                    @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = UserDTO.class)))
+            })
+    })
     public ResponseEntity<PagedModel<EntityModel<UserDTO>>> findAllUsers(
             @RequestParam(value = "page", defaultValue = "0") Integer page,
             @RequestParam(value = "size", defaultValue = "12") Integer size) {
@@ -34,6 +48,14 @@ public class UserResource {
     }
 
     @GetMapping(value = "/search/{uuid}")
+    @Operation(summary = "Find user.", description = "Find user by uuid.", responses = {
+            @ApiResponse(description = "Success", responseCode = "200", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = UserDTO.class))
+            }),
+            @ApiResponse(description = "Not found", responseCode = "404", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = BasicResponseExceptionDTO.class))
+            })
+    })
     public ResponseEntity<UserDTO> getUserByUuid(@PathVariable(value = "uuid") String uuid) {
         return ResponseEntity.ok().body(service.getUserByUuid(uuid));
     }
