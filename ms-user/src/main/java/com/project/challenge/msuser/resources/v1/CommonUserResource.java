@@ -18,7 +18,7 @@ public class CommonUserResource {
     private CommonUserService service;
 
     @GetMapping(value = "/{uuid}")
-    public ResponseEntity<CommonUserDTO> findByUuid(@PathVariable(name = "uuid") String uuid) {
+    public ResponseEntity<CommonUserDTO> findByUuid(@PathVariable(value = "uuid") String uuid) {
         return ResponseEntity.ok().body(service.findByUuid(uuid));
     }
 }
