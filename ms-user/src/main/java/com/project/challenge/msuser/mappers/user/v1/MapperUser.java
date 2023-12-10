@@ -3,6 +3,7 @@ package com.project.challenge.msuser.mappers.user.v1;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.data.domain.Page;
 import org.springframework.util.ObjectUtils;
 
 import com.project.challenge.msuser.DTOs.user.v1.UserDTO;
@@ -18,6 +19,13 @@ public class MapperUser implements Mapper<UserDTO, User> {
 
     public static MapperUser getInstance() {
         return mapper;
+    }
+
+    public Page<UserDTO> toDTOList(Page<User> entities) {
+        if (ObjectUtils.isEmpty(entities))
+            return null;
+        return entities
+                .map((user) -> toDTO(user));
     }
 
     @Override

@@ -1,12 +1,17 @@
 package com.project.challenge.msuser.resources.v1;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.PagedModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.challenge.msuser.DTOs.user.v1.UserBalanceDTO;
@@ -19,6 +24,14 @@ public class UserResource {
 
     @Autowired
     private UserService service;
+
+    @GetMapping
+    public ResponseEntity<PagedModel<EntityModel<UserDTO>>> findAllUsers(
+            @RequestParam(value = "page", defaultValue = "0") Integer page,
+            @RequestParam(value = "size", defaultValue = "12") Integer size) {
+        Pageable pageable = PageRequest.of(page, size);
+        return ResponseEntity.ok().body(service.findAllUsers(pageable));
+    }
 
     @GetMapping(value = "/search/{uuid}")
     public ResponseEntity<UserDTO> getUserByUuid(@PathVariable(value = "uuid") String uuid) {
