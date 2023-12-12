@@ -31,53 +31,64 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 @RequestMapping(value = "/ppchallenge/v1/users")
 public class UserResource {
 
-    @Autowired
-    private UserService service;
+	@Autowired
+	private UserService service;
 
-    @GetMapping
-    @Operation(summary = "Find all users.", description = "Returns all users with paging system.", responses = {
-            @ApiResponse(description = "Success", responseCode = "200", content = {
-                    @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = UserDTO.class)))
-            })
-    })
-    public ResponseEntity<PagedModel<EntityModel<UserDTO>>> findAllUsers(
-            @RequestParam(value = "page", defaultValue = "0") Integer page,
-            @RequestParam(value = "size", defaultValue = "12") Integer size) {
-        Pageable pageable = PageRequest.of(page, size);
-        return ResponseEntity.ok().body(service.findAllUsers(pageable));
-    }
+	@GetMapping
+	@Operation(summary = "Find all users.", description = "Returns all users with paging system.", responses = {
+			@ApiResponse(description = "Success", responseCode = "200", content = {
+					@Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = UserDTO.class))) }) })
+	public ResponseEntity<PagedModel<EntityModel<UserDTO>>> findAllUsers(
+			@RequestParam(value = "page", defaultValue = "0") Integer page,
+			@RequestParam(value = "size", defaultValue = "12") Integer size) {
+		Pageable pageable = PageRequest.of(page, size);
+		return ResponseEntity.ok().body(service.findAllUsers(pageable));
+	}
 
-    @GetMapping(value = "/search/{uuid}")
-    @Operation(summary = "Find user.", description = "Find user by uuid.", responses = {
-            @ApiResponse(description = "Success", responseCode = "200", content = {
-                    @Content(mediaType = "application/json", schema = @Schema(implementation = UserDTO.class))
-            }),
-            @ApiResponse(description = "Not found", responseCode = "404", content = {
-                    @Content(mediaType = "application/json", schema = @Schema(implementation = BasicResponseExceptionDTO.class))
-            })
-    })
-    public ResponseEntity<UserDTO> getUserByUuid(@PathVariable(value = "uuid") String uuid) {
-        return ResponseEntity.ok().body(service.getUserByUuid(uuid));
-    }
+	@GetMapping(value = "/search/{uuid}")
+	@Operation(summary = "Find user.", description = "Find user by uuid.", responses = {
+			@ApiResponse(description = "Success", responseCode = "200", content = {
+					@Content(mediaType = "application/json", schema = @Schema(implementation = UserDTO.class)) }),
+			@ApiResponse(description = "Not found", responseCode = "404", content = {
+					@Content(mediaType = "application/json", schema = @Schema(implementation = BasicResponseExceptionDTO.class)) }) })
+	public ResponseEntity<UserDTO> getUserByUuid(@PathVariable(value = "uuid") String uuid) {
+		return ResponseEntity.ok().body(service.getUserByUuid(uuid));
+	}
 
-    @GetMapping(value = "/search/common-user/{uuid}")
-    public ResponseEntity<UserDTO> getUserByCommonUserUuid(@PathVariable(name = "uuid") String uuid) {
-        return ResponseEntity.ok().body(service.getUserByCommonUserUuid(uuid));
-    }
+	@GetMapping(value = "/search/common-user/{uuid}")
+	public ResponseEntity<UserDTO> getUserByCommonUserUuid(@PathVariable(name = "uuid") String uuid) {
+		return ResponseEntity.ok().body(service.getUserByCommonUserUuid(uuid));
+	}
 
-    @GetMapping(value = "/search/shopkeeper/{uuid}")
-    public ResponseEntity<UserDTO> getUserByShopKeeperUuid(@PathVariable(name = "uuid") String uuid) {
-        return ResponseEntity.ok().body(service.getUserByShopKeeperUuid(uuid));
-    }
+	@GetMapping(value = "/search/shopkeeper/{uuid}")
+	public ResponseEntity<UserDTO> getUserByShopKeeperUuid(@PathVariable(name = "uuid") String uuid) {
+		return ResponseEntity.ok().body(service.getUserByShopKeeperUuid(uuid));
+	}
 
-    @GetMapping(value = "/search/all/{uuid}")
-    public ResponseEntity<UserDTO> getUserByShopKeeperOrCommonUserUuid(@PathVariable(name = "uuid") String uuid) {
-        return ResponseEntity.ok().body(service.getUserByShopKeeperOrCommonUserUuid(uuid));
-    }
+	@GetMapping(value = "/search/all/{uuid}")
+	@Operation(summary = "Find user.", description = "Find user by CommonUser or ShopKeeper uuid.", responses = {
+			@ApiResponse(description = "Success", responseCode = "200", content = {
+					@Content(mediaType = "application/json", schema = @Schema(implementation = UserDTO.class))
+			}),
+			@ApiResponse(description = "Success", responseCode = "404", content = {
+					@Content(mediaType = "application/json", schema = @Schema(implementation = BasicResponseExceptionDTO.class))
+			})
+	})
+	public ResponseEntity<UserDTO> getUserByShopKeeperOrCommonUserUuid(@PathVariable(name = "uuid") String uuid) {
+		return ResponseEntity.ok().body(service.getUserByShopKeeperOrCommonUserUuid(uuid));
+	}
 
-    @PostMapping(value = "/balances")
-    public ResponseEntity<UserDTO> updateBalance(@RequestBody UserBalanceDTO userBalance) {
-        return ResponseEntity.ok().body(service.saveBalanceToUser(userBalance));
-    }
+	@PostMapping(value = "/balances")
+	@Operation(summary = "Update user balance.", description = "", responses = {
+			@ApiResponse(description = "Success", responseCode = "200", content = {
+					@Content(mediaType = "application/json", schema = @Schema(implementation = UserDTO.class))
+			}),
+			@ApiResponse(description = "Success", responseCode = "404", content = {
+					@Content(mediaType = "application/json", schema = @Schema(implementation = BasicResponseExceptionDTO.class))
+			})
+	})
+	public ResponseEntity<UserDTO> updateBalance(@RequestBody UserBalanceDTO userBalance) {
+		return ResponseEntity.ok().body(service.saveBalanceToUser(userBalance));
+	}
 
 }
