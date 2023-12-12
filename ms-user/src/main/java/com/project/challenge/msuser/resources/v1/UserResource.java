@@ -56,11 +56,27 @@ public class UserResource {
 	}
 
 	@GetMapping(value = "/search/common-user/{uuid}")
+	@Operation(summary = "Find user.", description = "Find user by CommonUser uuid.", responses = {
+			@ApiResponse(description = "Success", responseCode = "200", content = {
+					@Content(mediaType = "application/json", schema = @Schema(implementation = UserDTO.class))
+			}),
+			@ApiResponse(description = "Success", responseCode = "404", content = {
+					@Content(mediaType = "application/json", schema = @Schema(implementation = BasicResponseExceptionDTO.class))
+			})
+	})
 	public ResponseEntity<UserDTO> getUserByCommonUserUuid(@PathVariable(name = "uuid") String uuid) {
 		return ResponseEntity.ok().body(service.getUserByCommonUserUuid(uuid));
 	}
 
 	@GetMapping(value = "/search/shopkeeper/{uuid}")
+	@Operation(summary = "Find user.", description = "Find user by ShopKeeper uuid.", responses = {
+			@ApiResponse(description = "Success", responseCode = "200", content = {
+					@Content(mediaType = "application/json", schema = @Schema(implementation = UserDTO.class))
+			}),
+			@ApiResponse(description = "Success", responseCode = "404", content = {
+					@Content(mediaType = "application/json", schema = @Schema(implementation = BasicResponseExceptionDTO.class))
+			})
+	})
 	public ResponseEntity<UserDTO> getUserByShopKeeperUuid(@PathVariable(name = "uuid") String uuid) {
 		return ResponseEntity.ok().body(service.getUserByShopKeeperUuid(uuid));
 	}
