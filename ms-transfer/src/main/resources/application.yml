@@ -26,3 +26,9 @@ eureka:
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
     preferIpAddress: true
     hostname: ${EUREKA_HOST_NAME:localhost}
+
+springdoc:
+  paths-to-match:
+  - "/ppchallenge/v1/**"
+  swagger-ui:
+    use-root-path: true
