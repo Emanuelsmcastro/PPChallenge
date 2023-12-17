@@ -5,6 +5,22 @@ spring:
   application:
     name: gateway-server
 
+  security:
+    oauth2:
+      client:
+        registration:
+          gateway:
+            provider: ppchallenge
+            client-name: ppchallenge-client
+            client-id: ppchallenge-client
+            client-secret: SrHCWBpHouNKqWvuZCC7StaUvVlV2MRa
+            scope: openid,offline_access,profile
+            redirect-uri: http://localhost:8765
+            authorization-grant-type: authorization_code
+        provider:
+          ppchallenge:
+            issuer-uri: ${KEYCLOCK_URL:http://localhost:9999/realms/ppchallenge}
+
   cloud:
     gateway:
       routes:
@@ -12,6 +28,8 @@ spring:
           uri: lb://ms-transfer
           predicates:
             - Path=/ms-transfer/**
+          filters:
+            TokenRelay=
 
         - id: ms-user
           uri: lb://ms-user
@@ -40,3 +58,9 @@ eureka:
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
     preferIpAddress: true
     hostname: ${EUREKA_HOST_NAME:localhost}
+    
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

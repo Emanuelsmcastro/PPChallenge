@@ -17,7 +17,24 @@ spring:
   cloud:
     compatibility-verifier:
       enabled: false
-
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${KEYCLOCK_URL:http://localhost:9999/realms/ppchallenge}
+          #jwk-set-uri: ${KEYCLOCK_JWK_URL:http://localhost:9999/realms/ppchallenge/protocol/openid-connect/certs}
+#      client:
+#        provider:
+#          external:
+#            issuer-uri: http://localhost:9999/realms/ppchallenge
+#        registration:
+#          external:
+#            provider: ppchallenge
+#            client-name: ppchallenge-client
+#            client-id: ppchallenge-client
+#            client-secret: SrHCWBpHouNKqWvuZCC7StaUvVlV2MRa
+#            scope: openid,offline_access,profile
+#            authorization-grant-type: authorization_code
 eureka:
   client:
     service-url:
