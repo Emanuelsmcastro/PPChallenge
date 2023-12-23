@@ -1,5 +1,6 @@
 package com.project.challenge.mstransfer.mstransfer.services;
 
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.util.ObjectUtils;
 
 import com.project.challenge.mstransfer.mstransfer.DTOs.transfer.v1.TransferDTO;
 import com.project.challenge.mstransfer.mstransfer.DTOs.transfer.v1.TransferRequestDTO;
+import com.project.challenge.mstransfer.mstransfer.DTOs.transfer.v2.TransferDTOWithHateoas;
 import com.project.challenge.mstransfer.mstransfer.DTOs.user.v1.UserDTO;
 import com.project.challenge.mstransfer.mstransfer.clients.MockClient;
 import com.project.challenge.mstransfer.mstransfer.clients.UserClient;
@@ -21,7 +23,9 @@ import com.project.challenge.mstransfer.mstransfer.infra.exceptions.TransferNotF
 import com.project.challenge.mstransfer.mstransfer.mappers.v1.MapperTransfer;
 import com.project.challenge.mstransfer.mstransfer.mappers.v1.MapperUserDTOReceiver;
 import com.project.challenge.mstransfer.mstransfer.mappers.v1.MapperUserDTOSender;
+import com.project.challenge.mstransfer.mstransfer.mappers.v2.MapperTransferWithHateoas;
 import com.project.challenge.mstransfer.mstransfer.repositories.TransferRepository;
+import com.project.challenge.mstransfer.mstransfer.resources.TransferResource;
 import com.project.challenge.mstransfer.mstransfer.validators.AboveTransferLimitValidator;
 import com.project.challenge.mstransfer.mstransfer.validators.DifferentReceiverAndSenderValidator;
 import com.project.challenge.mstransfer.mstransfer.validators.InsufficientFundsValidator;
@@ -47,7 +51,7 @@ public class TransferService {
                 .convert(getEntityByUuid(uuid));
     }
 
-    public TransferDTO createTransfer(TransferRequestDTO transferRequestDTO) {
+    public TransferDTOWithHateoas createTransfer(TransferRequestDTO transferRequestDTO) {
         transferRequestValidation(transferRequestDTO);
         Transfer transfer = generateTransferByTransferRequest(transferRequestDTO);
         Map<String, ?> differentReceiverAndSenderResult = transactionValidationWithReturnedValue(transfer)
@@ -57,9 +61,12 @@ public class TransferService {
             executeTransaction(differentReceiverAndSenderResult, transfer);
         }
         saveTransfer(transfer);
-        return MapperTransfer
+        
+        TransferDTOWithHateoas result = MapperTransferWithHateoas
                 .getInstance()
                 .convert(transfer);
+        result.add(linkTo(methodOn(TransferResource.class).findByUuid(result.getUuid())).withSelfRel());
+        return result;
     }
 
     private void executeTransaction(Map<String, ?> senderReceiver, Transfer transfer) {
