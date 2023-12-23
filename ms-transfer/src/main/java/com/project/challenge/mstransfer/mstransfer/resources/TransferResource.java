@@ -30,6 +30,7 @@ public class TransferResource {
     @Autowired
     private TransferService service;
 
+    @CrossOrigin(origins = {"http://localhost:8765"})
     @GetMapping(value = "/{uuid}")
     @Operation(summary = "Find transfer.", description = "Return transfer by uuid.", responses = {
     		@ApiResponse(description = "Success", responseCode = "200", content = {
@@ -43,8 +44,8 @@ public class TransferResource {
         return ResponseEntity.ok().body(service.findByUuid(uuid));
     }
 
-    @CrossOrigin(origins = "http://localhost:8765")
     @PostMapping
+    @CrossOrigin(origins = {"http://localhost:8765"})
     @Operation(summary = "Transfer request.", description = "Returns a transfer after executing it.", responses = {
     		@ApiResponse(description = "Success", responseCode = "200", content = {
     				@Content(mediaType = "application/json", schema = @Schema(implementation = TransferDTO.class))
