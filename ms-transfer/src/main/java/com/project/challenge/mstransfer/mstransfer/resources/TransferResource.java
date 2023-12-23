@@ -3,6 +3,7 @@ package com.project.challenge.mstransfer.mstransfer.resources;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,6 +30,7 @@ public class TransferResource {
     @Autowired
     private TransferService service;
 
+    @CrossOrigin(origins = {"http://localhost:8765"})
     @GetMapping(value = "/{uuid}")
     @Operation(summary = "Find transfer.", description = "Return transfer by uuid.", responses = {
     		@ApiResponse(description = "Success", responseCode = "200", content = {
@@ -43,6 +45,7 @@ public class TransferResource {
     }
 
     @PostMapping
+    @CrossOrigin(origins = {"http://localhost:8765"})
     @Operation(summary = "Transfer request.", description = "Returns a transfer after executing it.", responses = {
     		@ApiResponse(description = "Success", responseCode = "200", content = {
     				@Content(mediaType = "application/json", schema = @Schema(implementation = TransferDTO.class))

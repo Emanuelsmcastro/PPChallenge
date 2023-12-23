@@ -6,6 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.PagedModel;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,6 +36,7 @@ public class UserResource {
 	private UserService service;
 
 	@GetMapping
+	@CrossOrigin(origins = {"http://localhost:8765"})
 	@Operation(summary = "Find all users.", description = "Returns all users with paging system.", responses = {
 			@ApiResponse(description = "Success", responseCode = "200", content = {
 					@Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = UserDTO.class))) }) })
@@ -46,6 +48,7 @@ public class UserResource {
 	}
 
 	@GetMapping(value = "/search/{uuid}")
+	@CrossOrigin(origins = {"http://localhost:8765"})
 	@Operation(summary = "Find user.", description = "Find user by uuid.", responses = {
 			@ApiResponse(description = "Success", responseCode = "200", content = {
 					@Content(mediaType = "application/json", schema = @Schema(implementation = UserDTO.class)) }),
@@ -56,6 +59,7 @@ public class UserResource {
 	}
 
 	@GetMapping(value = "/search/common-user/{uuid}")
+	@CrossOrigin(origins = {"http://localhost:8765"})
 	@Operation(summary = "Find user.", description = "Find user by CommonUser uuid.", responses = {
 			@ApiResponse(description = "Success", responseCode = "200", content = {
 					@Content(mediaType = "application/json", schema = @Schema(implementation = UserDTO.class))
@@ -69,6 +73,7 @@ public class UserResource {
 	}
 
 	@GetMapping(value = "/search/shopkeeper/{uuid}")
+	@CrossOrigin(origins = {"http://localhost:8765"})
 	@Operation(summary = "Find user.", description = "Find user by ShopKeeper uuid.", responses = {
 			@ApiResponse(description = "Success", responseCode = "200", content = {
 					@Content(mediaType = "application/json", schema = @Schema(implementation = UserDTO.class))
@@ -82,6 +87,7 @@ public class UserResource {
 	}
 
 	@GetMapping(value = "/search/all/{uuid}")
+	@CrossOrigin(origins = {"http://localhost:8765"})
 	@Operation(summary = "Find user.", description = "Find user by CommonUser or ShopKeeper uuid.", responses = {
 			@ApiResponse(description = "Success", responseCode = "200", content = {
 					@Content(mediaType = "application/json", schema = @Schema(implementation = UserDTO.class))
@@ -95,6 +101,7 @@ public class UserResource {
 	}
 
 	@PostMapping(value = "/balances")
+	@CrossOrigin(origins = {"http://localhost:8765"})
 	@Operation(summary = "Update user balance.", description = "", responses = {
 			@ApiResponse(description = "Success", responseCode = "200", content = {
 					@Content(mediaType = "application/json", schema = @Schema(implementation = UserDTO.class))
