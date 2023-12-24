@@ -17,6 +17,12 @@ spring:
   cloud:
     compatibility-verifier:
       enabled: false
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:9999/realms/ppchallenge
+  
 
 eureka:
   client:
