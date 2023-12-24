@@ -17,6 +17,9 @@ spring:
   cloud:
     compatibility-verifier:
       enabled: false
+    openfeign:
+      oauth2:
+        enabled: true
   security:
     oauth2:
       resourceserver:
