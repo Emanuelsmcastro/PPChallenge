@@ -55,4 +55,13 @@ public class FeignHandler {
                 Instant.now().toString());
         return ResponseEntity.status(status).body(response);
     }
+  
+    @ExceptionHandler(FeignException.Unauthorized.class)
+    public ResponseEntity<BasicResponseExceptionDTO> unautorized(feign.FeignException.Unauthorized e,
+            HttpServletRequest request) {
+        HttpStatus status = HttpStatus.UNAUTHORIZED;
+        BasicResponseExceptionDTO response = new BasicResponseExceptionDTO(status.name(), e.getMessage(),
+                Instant.now().toString());
+        return ResponseEntity.status(status).body(response);
+    }
 }
