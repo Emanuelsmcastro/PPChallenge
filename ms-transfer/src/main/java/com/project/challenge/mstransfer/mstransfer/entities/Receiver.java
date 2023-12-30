@@ -7,8 +7,9 @@ import com.project.challenge.mstransfer.mstransfer.DTOs.user.v1.UserDTO;
 import com.project.challenge.mstransfer.mstransfer.interfaces.IReceiver;
 
 public class Receiver extends UserDTO implements IReceiver {
+	private static final long serialVersionUID = 1L;
 
-    public Receiver() {
+	public Receiver() {
 
     }
 

@@ -22,6 +22,6 @@ public enum TransferStatus {
             if (status.getValue().equals(value))
                 return status;
         }
-        throw new TransferStatusNotValid(String.format("Status (%d) not valid.", value));
+        throw new TransferStatusNotValid("Status (%d) not valid.".formatted(value));
     }
 }

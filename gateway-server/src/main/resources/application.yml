@@ -50,8 +50,3 @@ eureka:
     preferIpAddress: true
     hostname: ${EUREKA_HOST_NAME:localhost}
     
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"

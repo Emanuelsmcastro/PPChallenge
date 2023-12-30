@@ -1,8 +1,8 @@
 package com.project.challenge.mstransfer.mstransfer.DTOs.user.v1;
 
 public class CommonUserDTO extends BaseUser {
-
-    private Double transferLimit;
+	private static final long serialVersionUID = 1L;
+	private Double transferLimit;
 
     public CommonUserDTO() {
 

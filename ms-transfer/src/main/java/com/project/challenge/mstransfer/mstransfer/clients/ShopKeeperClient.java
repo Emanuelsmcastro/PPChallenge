@@ -11,5 +11,5 @@ import com.project.challenge.mstransfer.mstransfer.DTOs.user.v1.ShopKeeperDTO;
 public interface ShopKeeperClient {
 
     @GetMapping(value = "/{uuid}")
-    public ResponseEntity<ShopKeeperDTO> findByUuid(@PathVariable(value = "uuid") String uuid);
+    public ResponseEntity<ShopKeeperDTO> findByUuid(@PathVariable String uuid);
 }

@@ -18,7 +18,7 @@ public class TransferValueValidator implements IValidator<TransferRequestDTO> {
             return;
         }
         throw new TransferValueException(
-                String.format("Transfer value (%.2f) not equals value to send (%.2f).", transferValue, valueToSend));
+                "Transfer value (%.2f) not equals value to send (%.2f).".formatted(transferValue, valueToSend));
     }
 
 }

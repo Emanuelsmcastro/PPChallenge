@@ -19,8 +19,9 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "tb_user")
 public class User extends AbstractUser {
-
-    @Column(unique = true, nullable = false)
+	private static final long serialVersionUID = 1L;
+	
+	@Column(unique = true, nullable = false)
     private String cpfCNPJ;
     @Column(nullable = false)
     private UserType userType;

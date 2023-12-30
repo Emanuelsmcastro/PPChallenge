@@ -41,7 +41,7 @@ public class TransferResource {
     				@Content(mediaType = "application/json", schema = @Schema(implementation = BasicResponseExceptionDTO.class))
     		})
     })
-    public ResponseEntity<TransferDTO> findByUuid(@PathVariable(value = "uuid") String uuid) {
+    public ResponseEntity<TransferDTO> findByUuid(@PathVariable String uuid) {
         return ResponseEntity.ok().body(service.findByUuid(uuid));
     }
 

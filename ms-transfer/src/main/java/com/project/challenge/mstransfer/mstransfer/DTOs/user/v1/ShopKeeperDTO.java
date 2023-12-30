@@ -1,8 +1,9 @@
 package com.project.challenge.mstransfer.mstransfer.DTOs.user.v1;
 
 public class ShopKeeperDTO extends ReceiverDTO {
-
-    private Integer yearsInTheCompany;
+	private static final long serialVersionUID = 1L;
+	
+	private Integer yearsInTheCompany;
 
     public ShopKeeperDTO() {
 

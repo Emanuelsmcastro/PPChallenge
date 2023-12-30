@@ -118,7 +118,7 @@ public class TransferService {
         return rep
                 .findByUuid(uuid)
                 .orElseThrow(() -> new TransferNotFound(
-                        String.format("Transfer (%s) not found.", uuid)));
+                "Transfer (%s) not found.".formatted(uuid)));
     }
 
     private void saveTransfer(Transfer transfer) {
