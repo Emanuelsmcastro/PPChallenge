@@ -1,5 +1,6 @@
 package com.project.challenge.gatewayserver.configs;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
@@ -10,14 +11,12 @@ import org.springframework.security.web.server.SecurityWebFilterChain;
 @EnableWebFluxSecurity
 public class SecurityConfig {
 
-	public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity serverHttpSecurity) {
+	@Bean
+	SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity serverHttpSecurity) {
 		return serverHttpSecurity.csrf(ServerHttpSecurity.CsrfSpec::disable)
-				.authorizeExchange(exchange -> exchange.pathMatchers("/eureka/**")
-						.permitAll()
-						.anyExchange()
-						.authenticated())
-				.oauth2ResourceServer(oauth -> oauth
-						.jwt(Customizer.withDefaults()))
-				.build();
+				.authorizeExchange(exchange -> exchange
+						.pathMatchers("/eureka/**")
+						.permitAll().anyExchange().authenticated())
+				.oauth2ResourceServer(oauth -> oauth.jwt(Customizer.withDefaults())).build();
 	}
 }

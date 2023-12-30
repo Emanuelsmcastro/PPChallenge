@@ -18,6 +18,9 @@ spring:
           uri: lb://ms-transfer
           predicates:
             - Path=/ms-transfer/**
+          filters:
+          - TokenRelay
+          - SaveSession
             
         - id: ms-user
           uri: lb://ms-user
@@ -36,7 +39,7 @@ spring:
       default-filters:
         - RemoveRequestHeader=Cookie
         - RemoveRequestHeader=Set-Cookie
-        - RemoveRequestHeader=Authorization
+        - TokenRelay
 
 eureka:
   client:
