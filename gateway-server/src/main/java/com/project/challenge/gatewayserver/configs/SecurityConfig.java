@@ -15,8 +15,7 @@ public class SecurityConfig {
 	SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity serverHttpSecurity) {
 		return serverHttpSecurity.csrf(ServerHttpSecurity.CsrfSpec::disable)
 				.authorizeExchange(exchange -> exchange
-						.pathMatchers("/eureka/**", "/ms-transfer/swagger-ui/**",
-								"/ms-transfer/ms-transfer-doc/v3/api-docs/**", "/ms-transfer-doc/v3/api-docs/**")
+						.pathMatchers("/eureka/**")
 						.permitAll().anyExchange().authenticated())
 				.oauth2ResourceServer(oauth -> oauth.jwt(Customizer.withDefaults())).build();
 	}
