@@ -6,9 +6,9 @@ spring:
     name: ms-transfer
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://${db_host:localhost}:${db_port:3307}/${db_name:ppchallenge}?useTimezone=true&serverTimezone=UTC
-    username: ${db_user:user}
-    password: ${db_password:password}
+    url: jdbc:mysql://${DB_HOST:localhost}:${db_port:3307}/${DB_NAME:ppchallenge}?useTimezone=true&serverTimezone=UTC
+    username: ${DB_USER:user}
+    password: ${DB_PASSWORD:password}
   jpa:
     hibernate:
       ddl-auto: create
@@ -25,7 +25,6 @@ spring:
       resourceserver:
         jwt:
           issuer-uri: http://localhost:9999/realms/ppchallenge
-  
 
 eureka:
   client:
@@ -38,6 +37,6 @@ eureka:
 
 springdoc:
   paths-to-match:
-  - "/ppchallenge/v1/**"
+    - "/ppchallenge/v1/**"
   swagger-ui:
     use-root-path: true
