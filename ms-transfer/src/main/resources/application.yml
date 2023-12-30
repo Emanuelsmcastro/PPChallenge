@@ -41,3 +41,5 @@ springdoc:
   - "/ppchallenge/v1/**"
   swagger-ui:
     use-root-path: true
+  api-docs:
+    path: /ms-transfer-doc/v3/api-docs
