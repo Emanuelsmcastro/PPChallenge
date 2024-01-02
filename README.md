@@ -41,13 +41,13 @@ Este projeto é o resultado de um desafio técnico que me permitiu consolidar e 
 ## Docker-compose
 
 1. Substitua o IP que está no docker-compose para o da sua máquina:
-![image](https://github.com/Emanuelsmcastro/PPChallenge/assets/93106680/7341dbb4-fefb-4aaf-ba33-ac5e12a3cb73)
-OBS: Umas das validações do access token é o "issuer-uri":
-![image](https://github.com/Emanuelsmcastro/PPChallenge/assets/93106680/0e398496-7c36-4b6e-912e-23c4e9a99ad4)
-Por essa razão é necessário colocar o IP da máquina para que tanto os serviços quanto você tenha acesso ao mesmo issuer, evitando um possível erro de emissor.
+   ![image](https://github.com/Emanuelsmcastro/PPChallenge/assets/93106680/7341dbb4-fefb-4aaf-ba33-ac5e12a3cb73)
+   OBS: Umas das validações do access token é o "issuer-uri":
+   ![image](https://github.com/Emanuelsmcastro/PPChallenge/assets/93106680/0e398496-7c36-4b6e-912e-23c4e9a99ad4)
+   Por essa razão é necessário colocar o IP da máquina para que tanto os serviços quanto você tenha acesso ao mesmo issuer, evitando um possível erro de emissor.
 
-3. Na raiz do projeto, digite: docker-compose up -d --build
+2. Na raiz do projeto, digite: docker-compose up -d --build
 
-4. Aguarde os containers iniciarem:
+3. Aguarde os containers iniciarem:
 
-5. Utilize o Postman para realizar suas transações!
+4. Utilize o Postman para realizar suas transações!
