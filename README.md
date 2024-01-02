@@ -51,3 +51,17 @@ Este projeto é o resultado de um desafio técnico que me permitiu consolidar e 
 3. Aguarde os containers iniciarem:
 
 4. Utilize o Postman para realizar suas transações!
+
+## Postman
+
+1. Importe a coleção e o ambiente do postman disponibilizado no projeto:
+
+2. Modifique a variável "access_token_url" para que tenha o seu IP:
+
+3. Acesse a aba "Authorization" e certifiquesse que esteja como o exemplo a seguir:
+
+4. Clique em "Get New Access Token"
+
+5. Clique em "Use Token":
+
+6. Agora você já possui um access token para utilizar a aplicação!
