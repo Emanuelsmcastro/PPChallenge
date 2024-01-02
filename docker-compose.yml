@@ -1,0 +1,134 @@
+version: "3"
+
+services:
+  mysql-server:
+    container_name: mysql-server
+    image: mysql:8.2.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: ppchallenge
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    networks:
+      - ppchallenge-network
+    ports:
+      - "3307:3306"
+
+  keycloak:
+    container_name: keycloak-server
+    image: quay.io/keycloak/keycloak:23.0.3
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+    volumes:
+      - .\keycloak_volume\keycloak:/opt/keycloak
+    networks:
+      - ppchallenge-network
+    ports:
+      - "9999:8080"
+    command: start-dev
+
+  eureka-server:
+    container_name: eureka-server
+    build: eureka-server/
+    networks:
+      - ppchallenge-network
+    ports:
+      - "8761:8761"
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 30s
+        max_attempts: 3
+
+  gateway-server:
+    container_name: gateway-server
+    build: gateway-server/
+    environment:
+      EUREKA_SERVER_HOST: eureka-server
+      EUREKA_SERVER_PORT: 8761
+      KEYCLOAK_HOST: 192.168.1.8
+      KEYCLOAK_PORT: 9999
+      KEYCLOAK_REALMS: ppchallenge
+    networks:
+      - ppchallenge-network
+    ports:
+      - "8765:8765"
+    depends_on:
+      - mysql-server
+      - keycloak
+      - eureka-server
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 30s
+        max_attempts: 3
+
+  ms-user:
+    container_name: ms-user
+    build: ms-user/
+    environment:
+      MS_USER_PORT: 1002
+      DB_HOST: mysql-server
+      DB_PORT: 3306
+      DB_NAME: ppchallenge
+      DB_USER: user
+      DB_PASSWORD: password
+      EUREKA_SERVER_HOST: eureka-server
+      EUREKA_SERVER_PORT: 8761
+      KEYCLOAK_HOST: 192.168.1.8
+      KEYCLOAK_PORT: 9999
+      KEYCLOAK_REALMS: ppchallenge
+    ports:
+      - "1002:1002"
+    networks:
+      - ppchallenge-network
+    depends_on:
+      - mysql-server
+      - keycloak
+      - eureka-server
+      - gateway-server
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 30s
+        max_attempts: 3
+
+  ms-transfer:
+    container_name: ms-transfer
+    build: ms-transfer/
+    environment:
+      MS_TRANSFER_PORT: 1001
+      DB_HOST: mysql-server
+      DB_PORT: 3306
+      DB_NAME: ppchallenge
+      DB_USER: user
+      DB_PASSWORD: password
+      EUREKA_SERVER_HOST: eureka-server
+      EUREKA_SERVER_PORT: 8761
+      KEYCLOAK_HOST: 192.168.1.8
+      KEYCLOAK_PORT: 9999
+      KEYCLOAK_REALMS: ppchallenge
+    ports:
+      - "1001:1001"
+    networks:
+      - ppchallenge-network
+    depends_on:
+      - mysql-server
+      - keycloak
+      - eureka-server
+      - gateway-server
+      - ms-user
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 30s
+        max_attempts: 3
+
+networks:
+  ppchallenge-network:
+    driver: bridge
+
+volumes:
+  keycloak:
+    external: true
