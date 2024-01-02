@@ -12,7 +12,7 @@
 
 A seguir teremos uma explicação mais técnica sobre o projeto.
 
-FOTO JAVA.
+![wallpaperflare com_wallpaper](https://github.com/Emanuelsmcastro/PPChallenge/assets/93106680/1cb1876b-fa28-400c-b9f3-1cd6f7c82f21)
 
 Este projeto é o resultado de um desafio técnico que me permitiu consolidar e aplicar diversos conceitos que venho estudando. O objetivo principal era integrar vários dos meus estudos em um único projeto, criando uma plataforma robusta e funcional. Dentre as tecnologias empregadas, destaco o uso do Spring Boot 3 e Java, que foram fundamentais para o desenvolvimento e aprimoramento deste projeto. A seguir, apresento a lista completa das tecnologias utilizadas.
 
