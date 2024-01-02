@@ -73,3 +73,8 @@ Este projeto é o resultado de um desafio técnico que me permitiu consolidar e 
 
 6. Agora você já possui um access token para utilizar a aplicação!
 ![image](https://github.com/Emanuelsmcastro/PPChallenge/assets/93106680/ffd6e29f-91aa-4db5-b959-5a0d36a416b7)
+
+## Swagger
+1. Escolha entre MS-USER (http://localhost:1001/swagger-ui/index.html) e MS-TRANSFER (http://localhost:1002/swagger-ui/index.html):
+![image](https://github.com/Emanuelsmcastro/PPChallenge/assets/93106680/b0629e27-4b2e-4fa1-a900-ff9c26621dc9)
+
