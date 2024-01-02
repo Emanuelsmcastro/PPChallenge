@@ -33,3 +33,17 @@ Este projeto é o resultado de um desafio técnico que me permitiu consolidar e 
 > Além disso, implementei três padrões de projeto fundamentais para estruturar o código de maneira eficiente e eficaz. O padrão Factory Method foi usado para fornecer classe para criar objetos, permitindo o objeto desejado seja instanciado. O padrão Builder foi empregado para construir objetos complexos passo a passo, oferecendo a possibilidade de produzir diferentes tipos e representações de um objeto usando o mesmo código de construção. Por fim, o padrão Chain of Responsibility foi utilizado para tratar as estrições das operações, como por exemplo: retornar um erro ao usuário ou atualizar o status da transação de acordo com o estabelecido na regra de negócio.
 
 > Além disso, o projeto também emprega o padrão de arquitetura Model-View-Controller (MVC), que é fundamental para a estruturação eficaz do sistema. O MVC é um padrão de design que divide a aplicação em três componentes interconectados: o Model, que representa os dados e as regras de negócio; a View, que é a interface do usuário; e o Controller, que processa e responde às ações do usuário, manipulando os dados conforme necessário. A utilização do MVC permite uma separação clara das responsabilidades, facilitando a manutenção e a compreensão do código. Além disso, ele promove a modularidade e a flexibilidade, características essenciais para a escalabilidade do projeto. Portanto, a adoção do padrão MVC é uma parte crucial da estratégia de design deste projeto, contribuindo significativamente para a sua robustez e eficiência.
+
+# Como posso utilizar a aplicação?
+
+> Nessa sessão iremos conseguir configurar o ambiente para conseguirmos rodar a aplicação corretamente.
+
+## Docker-compose
+
+1. Substitua o IP que está no docker-compose para o da sua máquina:
+
+2. Na raiz do projeto, digite: docker-compose up -d --build
+
+3. Aguarde os containers iniciarem:
+
+4. Utilize o Postman para realizar suas transações!
