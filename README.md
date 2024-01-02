@@ -40,30 +40,58 @@ Este projeto é o resultado de um desafio técnico que me permitiu consolidar e 
 
 ## Docker-compose
 
-1. Substitua o IP que está no docker-compose para o da sua máquina:
+1. Substitua o IP que está no docker-compose para o da sua máquina:                                                                           
    ![image](https://github.com/Emanuelsmcastro/PPChallenge/assets/93106680/7341dbb4-fefb-4aaf-ba33-ac5e12a3cb73)
-   OBS: Umas das validações do access token é o "issuer-uri":
+   OBS: Umas das validações do access token é o "issuer-uri":                                                                                                                                                     
    ![image](https://github.com/Emanuelsmcastro/PPChallenge/assets/93106680/0e398496-7c36-4b6e-912e-23c4e9a99ad4)
    Por essa razão é necessário colocar o IP da máquina para que tanto os serviços quanto você tenha acesso ao mesmo issuer, evitando um possível erro de emissor.
 
-2. Na raiz do projeto, digite: docker-compose up -d --build
+2. Na raiz do projeto, digite: docker-compose up -d --build                                                              
 ![image](https://github.com/Emanuelsmcastro/PPChallenge/assets/93106680/87f3003a-86fc-4354-ab0e-8d023d24846c)
 
-3. Aguarde os containers iniciarem:
+3. Aguarde os containers iniciarem:                                                                                                                        
 ![image](https://github.com/Emanuelsmcastro/PPChallenge/assets/93106680/41b0ef3e-8ebd-4f28-9bf5-7c39b6889530)
 
-4. Utilize o Postman para realizar suas transações!
+5. Utilize o Postman para realizar suas transações!
 
 ## Postman
 
 1. Importe a coleção e o ambiente do postman disponibilizado no projeto:
+![image](https://github.com/Emanuelsmcastro/PPChallenge/assets/93106680/b8f3c3f3-ccac-4166-b600-0152c02655df)
 
 2. Modifique a variável "access_token_url" para que tenha o seu IP:
+![image](https://github.com/Emanuelsmcastro/PPChallenge/assets/93106680/a5527f31-fe37-428b-bab5-43b059932615)
 
 3. Acesse a aba "Authorization" e certifiquesse que esteja como o exemplo a seguir:
+![image](https://github.com/Emanuelsmcastro/PPChallenge/assets/93106680/677c2641-c247-45f3-8470-9abf5c7b974d)
 
-4. Clique em "Get New Access Token"
+4. Clique em "Get New Access Token"                                                         
+![image](https://github.com/Emanuelsmcastro/PPChallenge/assets/93106680/352bc37f-d95d-426e-90e3-4d123d2a633b)
 
-5. Clique em "Use Token":
+5. Clique em "Use Token":                                                       
+![image](https://github.com/Emanuelsmcastro/PPChallenge/assets/93106680/95a1712d-f0af-4f99-866e-d31b8878c36a)
 
-6. Agora você já possui um access token para utilizar a aplicação!
+6. Agora você já possui um access token para utilizar a aplicação!                                      
+![image](https://github.com/Emanuelsmcastro/PPChallenge/assets/93106680/ffd6e29f-91aa-4db5-b959-5a0d36a416b7)
+
+## Swagger
+1. Escolha entre MS-USER (http://localhost:1001/swagger-ui/index.html) e MS-TRANSFER (http://localhost:1002/swagger-ui/index.html):
+![image](https://github.com/Emanuelsmcastro/PPChallenge/assets/93106680/b0629e27-4b2e-4fa1-a900-ff9c26621dc9)
+
+# Exemplo de uso
+1. Escolha o uuid do usuário que irá enviar e o usuário que irá receber (OBS: O uuid do usuário principal não é válido, precisa ser um CommonUser ou Shopkeeper):
+![image](https://github.com/Emanuelsmcastro/PPChallenge/assets/93106680/02b4a829-f0cb-49bb-8b64-00f09661a515)
+>Nesse exemplo irei utilizar o CommonUser (123e4567-e89b-12d3-a456-426614174000) para enviar 25 para o ShopKeeper (123e4567-e89b-12d3-a456-426614174003).
+2. Realize a transação:
+![image](https://github.com/Emanuelsmcastro/PPChallenge/assets/93106680/e85141ef-a380-4900-8fec-b85db9e4aa45)
+
+## Erros comuns
+
+1. Valores de envio e recebimento diferentes:                                                                  
+![image](https://github.com/Emanuelsmcastro/PPChallenge/assets/93106680/347d6e70-7aeb-493e-9617-cf106e83b431)
+
+2. Transferência para o mesmo usuário (OBS: Nesse caso a análise de usuário é feita pelo uuid do usuário principal, não do CommonUser e nem do Shopkeeper):
+![image](https://github.com/Emanuelsmcastro/PPChallenge/assets/93106680/e1615dff-18a8-4eb2-81b5-addd99818476)
+
+3. Usuário não encontrado:                                                             
+![image](https://github.com/Emanuelsmcastro/PPChallenge/assets/93106680/17750f70-09bb-462c-ab64-f8440f934ec9)
