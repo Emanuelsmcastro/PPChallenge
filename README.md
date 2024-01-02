@@ -47,8 +47,10 @@ Este projeto é o resultado de um desafio técnico que me permitiu consolidar e 
    Por essa razão é necessário colocar o IP da máquina para que tanto os serviços quanto você tenha acesso ao mesmo issuer, evitando um possível erro de emissor.
 
 2. Na raiz do projeto, digite: docker-compose up -d --build
+![image](https://github.com/Emanuelsmcastro/PPChallenge/assets/93106680/87f3003a-86fc-4354-ab0e-8d023d24846c)
 
 3. Aguarde os containers iniciarem:
+![image](https://github.com/Emanuelsmcastro/PPChallenge/assets/93106680/41b0ef3e-8ebd-4f28-9bf5-7c39b6889530)
 
 4. Utilize o Postman para realizar suas transações!
 
