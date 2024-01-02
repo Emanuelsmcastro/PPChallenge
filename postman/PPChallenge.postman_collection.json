@@ -1,0 +1,302 @@
+{
+	"info": {
+		"_postman_id": "10743218-cde4-49ec-865c-de6c0d512b69",
+		"name": "PPChallenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30469499"
+	},
+	"item": [
+		{
+			"name": "Create Transfer",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "string"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "http://localhost:8765",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "MDxrNV6qLeO05jkeFIMRKTVDAv03aeLH",
+							"type": "string"
+						},
+						{
+							"key": "headerPrefix",
+							"value": "Bearer",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "useBrowser",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "tokenName",
+							"value": "access_token",
+							"type": "string"
+						},
+						{
+							"key": "state",
+							"value": "asdasdasdas",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "openid profile",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "ppchallenge-client",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "http://localhost:9999/realms/ppchallenge/protocol/openid-connect/auth",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "http://localhost:9999/realms/ppchallenge/protocol/openid-connect/token",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJEWExoQlRidnp0UG1tQi10RU9US3Y4UDVIVk5tb3djMVFQZWUzN2dyNDFrIn0.eyJleHAiOjE3MDMzNzc4OTksImlhdCI6MTcwMzM3NzU5OSwianRpIjoiYjc0NGYxYTUtOWJiZi00NzM1LThjNDAtMzBhZjdhMzkzODhlIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo5OTk5L3JlYWxtcy9wcGNoYWxsZW5nZSIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiJkZTY5MjA5NS02NzJmLTQxZjAtYWRlYi05NGUxZDc5MzQzMzEiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJwcGNoYWxsZW5nZS1jbGllbnQiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbIioiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImRlZmF1bHQtcm9sZXMtcHBjaGFsbGVuZ2UiLCJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsicHBjaGFsbGVuZ2UtY2xpZW50Ijp7InJvbGVzIjpbInVtYV9wcm90ZWN0aW9uIl19LCJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6Im9wZW5pZCBlbWFpbCBwcm9maWxlIiwiY2xpZW50SG9zdCI6IjE3Mi4xNy4wLjEiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsInByZWZlcnJlZF91c2VybmFtZSI6InNlcnZpY2UtYWNjb3VudC1wcGNoYWxsZW5nZS1jbGllbnQiLCJjbGllbnRBZGRyZXNzIjoiMTcyLjE3LjAuMSIsImNsaWVudF9pZCI6InBwY2hhbGxlbmdlLWNsaWVudCJ9.DjwLka-jT95FbqDfX_kpcOgp_4Vtu4S5XmJrxf7Xr_5C7ehYBNBf7x1Ln_GbrkGCL1nEkDuDq9KvgZ9qj7P-ittWsvxe8pYS-eIYTfGFChSubSmu4p0CxJOO-C-Ib4h3K7kcoCRYhWI9fZHivayYc7s7ECZ5msjZO1VpTem2ut7a7tZ765a99E5y9xpd9NF7cdqmXRSYpfahWzNIZdkX5_ZXVl-Fepli_cEDX6BqFTanOdv_ofXJiJFqA6EkO8dtN4FtGiLvMtycCA6at_8kXsku8eQp9zZwvnceFxP0I58hM99cDW44cUrRF0204sMHUBAqQ9lvOcrGky21y1300Q",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"valueToReceive\": 1000,\r\n    \"receiver\": {\r\n        \"uuid\": \"123e4567-e89b-12d3-a456-426614174003\"\r\n    },\r\n    \"sender\": {\r\n        \"uuidSender\": \"123e4567-e89b-12d3-a456-426614174000\",\r\n        \"valueToSend\": 1000\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8765/ms-transfer/ppchallenge/v1/transfers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8765",
+					"path": [
+						"ms-transfer",
+						"ppchallenge",
+						"v1",
+						"transfers"
+					],
+					"query": [
+						{
+							"key": "Authorization",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJvMU9zX2FmcjBZdFRxTDZFZmQ1SkhQTEMxTF8tUFRWZ29CT1RrVjdKYzA4In0.eyJleHAiOjE3MDI3NTI3MjIsImlhdCI6MTcwMjc1MjQyMiwiYXV0aF90aW1lIjoxNzAyNzUyNDAzLCJqdGkiOiJhYTg3ZWVhOS0wY2E2LTRmZTUtODJmYi03YjUwOTc2YzI3MWMiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0Ojk5OTkvcmVhbG1zL3BwY2hhbGxlbmdlIiwiYXVkIjoiYWNjb3VudCIsInN1YiI6IjdlM2JiNDc2LTQ2MGQtNDNlMC04ZTk1LThkOGUyN2E4OWU1ZiIsInR5cCI6IkJlYXJlciIsImF6cCI6InBwY2hhbGxlbmdlLWNsaWVudCIsInNlc3Npb25fc3RhdGUiOiJkZjg1OTY2Mi0zNWM0LTRlNjYtYmRlMS0zZGY2MDFjOWJjZDYiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbIiJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsiZGVmYXVsdC1yb2xlcy1wcGNoYWxsZW5nZSIsIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6Im9wZW5pZCBlbWFpbCBwcm9maWxlIiwic2lkIjoiZGY4NTk2NjItMzVjNC00ZTY2LWJkZTEtM2RmNjAxYzliY2Q2IiwiZW1haWxfdmVyaWZpZWQiOnRydWUsIm5hbWUiOiJFbWFudWVsIENhc3RybyIsInByZWZlcnJlZF91c2VybmFtZSI6ImVtYW51ZWwiLCJnaXZlbl9uYW1lIjoiRW1hbnVlbCIsImZhbWlseV9uYW1lIjoiQ2FzdHJvIiwiZW1haWwiOiJlbWFudWVsc21jYXN0cm8zQGdtYWlsLmNvbSJ9.Hdy6A_W7ymfPYWDB8g0L38IuMlSWy7dVpPxnQHC8RGR88nNITip7MR2fJx9SPtuCUcuL-pww2jGYs4Wj2FbEFfy52vrJ_Ev4tmyu3NHmMvz-KPmKoiHj2OU4m6T98VUgtG07F42w6eTzvJlXErhsmMUcsGL2SLkopuVYVWvRslzffmw6iE8kHoGDDTQeiC-l3Sz_ISmhaFDRZAQrfeg4zi_-Z2p5cEGweYrN7hC37OxAKW-S85j-ETsg7mib2n1ixuB-1ElyW-WrK2uJTxUAWaZwpjfntseztAMJF3s6jBkz5RjrEZakdiD7XZ4rgwtlsxw4IOwIGvhOhOK1pLHG_Q",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Transfer",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "refreshTokenUrl",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "{{scope}}",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "{{client_secret}}",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "{{client_id}}",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "{{access_token_url}}",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "string"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "http://localhost:8765",
+							"type": "string"
+						},
+						{
+							"key": "headerPrefix",
+							"value": "Bearer",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "useBrowser",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "access_token",
+							"type": "string"
+						},
+						{
+							"key": "state",
+							"value": "asdasdasdas",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "http://localhost:9999/realms/ppchallenge/protocol/openid-connect/auth",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJEWExoQlRidnp0UG1tQi10RU9US3Y4UDVIVk5tb3djMVFQZWUzN2dyNDFrIn0.eyJleHAiOjE3MDMzNDUxNjcsImlhdCI6MTcwMzM0NDg2NywiYXV0aF90aW1lIjoxNzAzMzQzNzY1LCJqdGkiOiI2NmQ1MDY1Yi1lMTIxLTRiMjgtOTU3OS1mM2EyNTg3NjliNTciLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0Ojk5OTkvcmVhbG1zL3BwY2hhbGxlbmdlIiwiYXVkIjoiYWNjb3VudCIsInN1YiI6IjcyYmQzNWRjLTA5NzktNDhkYi1hNWNhLTY5NjAwODRhOGVkYSIsInR5cCI6IkJlYXJlciIsImF6cCI6InBwY2hhbGxlbmdlLWNsaWVudCIsInNlc3Npb25fc3RhdGUiOiIxODgwNDE3Mi02ZWY4LTQ1MTQtYmY3NS1iNTIzZTdiMjcwMmUiLCJhY3IiOiIwIiwiYWxsb3dlZC1vcmlnaW5zIjpbIioiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImRlZmF1bHQtcm9sZXMtcHBjaGFsbGVuZ2UiLCJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJvcGVuaWQgZW1haWwgcHJvZmlsZSIsInNpZCI6IjE4ODA0MTcyLTZlZjgtNDUxNC1iZjc1LWI1MjNlN2IyNzAyZSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6ImVtYW51ZWwgY2FzdHJvIiwicHJlZmVycmVkX3VzZXJuYW1lIjoiZW1hbnVlbCIsImdpdmVuX25hbWUiOiJlbWFudWVsIiwiZmFtaWx5X25hbWUiOiJjYXN0cm8iLCJlbWFpbCI6ImVtYW51ZWxzbWNhc3RybzNAZ21haWwuY29tIn0.RXrFOdIMz4zmEMmchfFfkEwSHjdufuZOxCJegVn9uP_TooRoTfInNmfxWpQ5hz8uIcEuDy1TUa4L78WdNaUprrQ-uPbqbc5yxEI-YsJ1wIbwCR18OeOpivmIpx0caz9Jfv5hmbxo0MzHFAm1S49uYjndf315Rpe_8SqArMNqp-7clMl-CjAiKNG56VDWOYoLkbFWPlHC8RWirEiI13s6pj80Gr4PZIhx3Jv-w46V32vinZOfgVZ6SN7YEtlrMYoYbztaMP3e3TyJ4DolYna-sVqG9o6m1HxLNE4gMSfO6o6ZMV4XKDu_wG4LjgsGAUYcwJdnrX_w5kV98SHSo6ED5Q",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8765/ms-transfer/ppchallenge/v1/transfers/30e2d306-cfca-411d-92ec-4a7169fd7efd",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8765",
+					"path": [
+						"ms-transfer",
+						"ppchallenge",
+						"v1",
+						"transfers",
+						"30e2d306-cfca-411d-92ec-4a7169fd7efd"
+					],
+					"query": [
+						{
+							"key": "Authorization",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJvMU9zX2FmcjBZdFRxTDZFZmQ1SkhQTEMxTF8tUFRWZ29CT1RrVjdKYzA4In0.eyJleHAiOjE3MDI3NTI3MjIsImlhdCI6MTcwMjc1MjQyMiwiYXV0aF90aW1lIjoxNzAyNzUyNDAzLCJqdGkiOiJhYTg3ZWVhOS0wY2E2LTRmZTUtODJmYi03YjUwOTc2YzI3MWMiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0Ojk5OTkvcmVhbG1zL3BwY2hhbGxlbmdlIiwiYXVkIjoiYWNjb3VudCIsInN1YiI6IjdlM2JiNDc2LTQ2MGQtNDNlMC04ZTk1LThkOGUyN2E4OWU1ZiIsInR5cCI6IkJlYXJlciIsImF6cCI6InBwY2hhbGxlbmdlLWNsaWVudCIsInNlc3Npb25fc3RhdGUiOiJkZjg1OTY2Mi0zNWM0LTRlNjYtYmRlMS0zZGY2MDFjOWJjZDYiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbIiJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsiZGVmYXVsdC1yb2xlcy1wcGNoYWxsZW5nZSIsIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6Im9wZW5pZCBlbWFpbCBwcm9maWxlIiwic2lkIjoiZGY4NTk2NjItMzVjNC00ZTY2LWJkZTEtM2RmNjAxYzliY2Q2IiwiZW1haWxfdmVyaWZpZWQiOnRydWUsIm5hbWUiOiJFbWFudWVsIENhc3RybyIsInByZWZlcnJlZF91c2VybmFtZSI6ImVtYW51ZWwiLCJnaXZlbl9uYW1lIjoiRW1hbnVlbCIsImZhbWlseV9uYW1lIjoiQ2FzdHJvIiwiZW1haWwiOiJlbWFudWVsc21jYXN0cm8zQGdtYWlsLmNvbSJ9.Hdy6A_W7ymfPYWDB8g0L38IuMlSWy7dVpPxnQHC8RGR88nNITip7MR2fJx9SPtuCUcuL-pww2jGYs4Wj2FbEFfy52vrJ_Ev4tmyu3NHmMvz-KPmKoiHj2OU4m6T98VUgtG07F42w6eTzvJlXErhsmMUcsGL2SLkopuVYVWvRslzffmw6iE8kHoGDDTQeiC-l3Sz_ISmhaFDRZAQrfeg4zi_-Z2p5cEGweYrN7hC37OxAKW-S85j-ETsg7mib2n1ixuB-1ElyW-WrK2uJTxUAWaZwpjfntseztAMJF3s6jBkz5RjrEZakdiD7XZ4rgwtlsxw4IOwIGvhOhOK1pLHG_Q",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://192.168.1.8:8765/ms-user/ppchallenge/v1/users?page=0&size=12",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"8"
+					],
+					"port": "8765",
+					"path": [
+						"ms-user",
+						"ppchallenge",
+						"v1",
+						"users"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "12"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Balance",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"uuid\": \"123e4567-e89b-12d3-a456-426614174004\",\r\n    \"balance\": 78000.0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8765/ms-user/ppchallenge/v1/users/balances",
+					"host": [
+						"localhost"
+					],
+					"port": "8765",
+					"path": [
+						"ms-user",
+						"ppchallenge",
+						"v1",
+						"users",
+						"balances"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
