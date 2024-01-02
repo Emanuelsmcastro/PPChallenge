@@ -47,7 +47,7 @@ services:
     environment:
       EUREKA_SERVER_HOST: eureka-server
       EUREKA_SERVER_PORT: 8761
-      KEYCLOAK_HOST: 192.168.1.8
+      KEYCLOAK_HOST: 192.168.1.8 # Seu IP aqui.
       KEYCLOAK_PORT: 9999
       KEYCLOAK_REALMS: ppchallenge
     networks:
@@ -68,6 +68,7 @@ services:
     container_name: ms-user
     build: ms-user/
     environment:
+      MS_USER_PORT: 1001
       DB_HOST: mysql-server
       DB_PORT: 3306
       DB_NAME: ppchallenge
@@ -75,9 +76,11 @@ services:
       DB_PASSWORD: password
       EUREKA_SERVER_HOST: eureka-server
       EUREKA_SERVER_PORT: 8761
-      KEYCLOAK_HOST: 192.168.1.8
+      KEYCLOAK_HOST: 192.168.1.8 # Seu IP aqui.
       KEYCLOAK_PORT: 9999
       KEYCLOAK_REALMS: ppchallenge
+    ports:
+      - "1001:1001"
     networks:
       - ppchallenge-network
     depends_on:
@@ -95,6 +98,7 @@ services:
     container_name: ms-transfer
     build: ms-transfer/
     environment:
+      MS_TRANSFER_PORT: 1002
       DB_HOST: mysql-server
       DB_PORT: 3306
       DB_NAME: ppchallenge
@@ -102,9 +106,11 @@ services:
       DB_PASSWORD: password
       EUREKA_SERVER_HOST: eureka-server
       EUREKA_SERVER_PORT: 8761
-      KEYCLOAK_HOST: 192.168.1.8
+      KEYCLOAK_HOST: 192.168.1.8 # Seu IP aqui.
       KEYCLOAK_PORT: 9999
       KEYCLOAK_REALMS: ppchallenge
+    ports:
+      - "1002:1002"
     networks:
       - ppchallenge-network
     depends_on:
