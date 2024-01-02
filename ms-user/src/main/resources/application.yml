@@ -6,9 +6,9 @@ spring:
     name: ms-user
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://${db_host:localhost}:${db_port:3307}/${db_name:ppchallenge}?useTimezone=true&serverTimezone=UTC
-    username: ${db_user:user}
-    password: ${db_password:password}
+    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3307}/${DB_NAME:ppchallenge}?useTimezone=true&serverTimezone=UTC
+    username: ${DB_USER:user}
+    password: ${DB_PASSWORD:password}
   jpa:
     hibernate:
       ddl-auto: create
@@ -21,16 +21,16 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://localhost:9999/realms/ppchallenge
+          issuer-uri: http://${KEYCLOAK_HOST:localhost}:${KEYCLOAK_PORT:9999}/realms/${KEYCLOAK_REALMS:ppchallenge}
 
 eureka:
   client:
     service-url:
-      defaultZone: ${EUREKA_SERVER_URL:http://localhost}:${EUREKA_SERVER_PORT:8761}/eureka
+      defaultZone: http://${EUREKA_SERVER_HOST:localhost}:${EUREKA_SERVER_PORT:8761}/eureka
   instance:
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
     preferIpAddress: true
-    hostname: ${EUREKA_HOST_NAME:localhost}
+    hostname: ${EUREKA_SERVER_HOST:localhost}
 
 springdoc:
   paths-to-match:
