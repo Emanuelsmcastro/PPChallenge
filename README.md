@@ -57,13 +57,19 @@ Este projeto é o resultado de um desafio técnico que me permitiu consolidar e 
 ## Postman
 
 1. Importe a coleção e o ambiente do postman disponibilizado no projeto:
+![image](https://github.com/Emanuelsmcastro/PPChallenge/assets/93106680/b8f3c3f3-ccac-4166-b600-0152c02655df)
 
 2. Modifique a variável "access_token_url" para que tenha o seu IP:
+![image](https://github.com/Emanuelsmcastro/PPChallenge/assets/93106680/a5527f31-fe37-428b-bab5-43b059932615)
 
 3. Acesse a aba "Authorization" e certifiquesse que esteja como o exemplo a seguir:
+![image](https://github.com/Emanuelsmcastro/PPChallenge/assets/93106680/677c2641-c247-45f3-8470-9abf5c7b974d)
 
 4. Clique em "Get New Access Token"
+![image](https://github.com/Emanuelsmcastro/PPChallenge/assets/93106680/352bc37f-d95d-426e-90e3-4d123d2a633b)
 
 5. Clique em "Use Token":
+![image](https://github.com/Emanuelsmcastro/PPChallenge/assets/93106680/95a1712d-f0af-4f99-866e-d31b8878c36a)
 
 6. Agora você já possui um access token para utilizar a aplicação!
+![image](https://github.com/Emanuelsmcastro/PPChallenge/assets/93106680/ffd6e29f-91aa-4db5-b959-5a0d36a416b7)
