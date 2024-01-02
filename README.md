@@ -78,3 +78,20 @@ Este projeto é o resultado de um desafio técnico que me permitiu consolidar e 
 1. Escolha entre MS-USER (http://localhost:1001/swagger-ui/index.html) e MS-TRANSFER (http://localhost:1002/swagger-ui/index.html):
 ![image](https://github.com/Emanuelsmcastro/PPChallenge/assets/93106680/b0629e27-4b2e-4fa1-a900-ff9c26621dc9)
 
+# Exemplo de uso
+1. Escolha o uuid do usuário que irá enviar e o usuário que irá receber (OBS: O uuid do usuário principal não é válido, precisa ser um CommonUser ou Shopkeeper):
+![image](https://github.com/Emanuelsmcastro/PPChallenge/assets/93106680/02b4a829-f0cb-49bb-8b64-00f09661a515)
+Nesse exemplo irei utilizar o CommonUser (123e4567-e89b-12d3-a456-426614174000) para enviar 25 para o ShopKeeper (123e4567-e89b-12d3-a456-426614174003)
+2. Realize a transação:
+![image](https://github.com/Emanuelsmcastro/PPChallenge/assets/93106680/e85141ef-a380-4900-8fec-b85db9e4aa45)
+
+## Erros comuns
+
+1. Valores de envio e recebimento diferentes:
+![image](https://github.com/Emanuelsmcastro/PPChallenge/assets/93106680/347d6e70-7aeb-493e-9617-cf106e83b431)
+
+2. Transferência para o mesmo usuário (OBS: Nesse caso a análise de usuário é feita pelo uuid do usuário principal, não do CommonUser e nem do Shopkeeper):
+![image](https://github.com/Emanuelsmcastro/PPChallenge/assets/93106680/e1615dff-18a8-4eb2-81b5-addd99818476)
+
+3. Usuário não encontrado:
+![image](https://github.com/Emanuelsmcastro/PPChallenge/assets/93106680/17750f70-09bb-462c-ab64-f8440f934ec9)
