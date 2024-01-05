@@ -36,7 +36,7 @@ Este projeto é o resultado de um desafio técnico que me permitiu consolidar e 
 
 # Como posso utilizar a aplicação?
 
-> Nessa sessão iremos conseguir configurar o ambiente para conseguirmos rodar a aplicação corretamente.
+> Nessa sessão iremos configurar o ambiente para conseguirmos rodar a aplicação corretamente.
 
 ## Docker-compose
 
